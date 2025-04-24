@@ -1,16 +1,18 @@
 start: header? content
 
-header: KIVY_VERSION NEWLINE?
+header: ((KIVY_VERSION | KV_VERSION) NEWLINE?)+
 
-KIVY_VERSION: "#:" "kivy" WHITESPACE VERSION
-
+SPECIAL: "#:"
 VERSION: DIGIT ("." DIGIT)+
+KIVY_VERSION: SPECIAL "kivy" WHITESPACE VERSION
+KV_VERSION: SPECIAL "kv" WHITESPACE VERSION
 
 content: (line NEWLINE)*
 
 line: /[^\n]+/
 
 NEWLINE: /\r?\n/
+// only (multi-)space supported in SPECIAL
 WHITESPACE: " "+
 DIGIT: /[0-9]+/
 
