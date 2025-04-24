@@ -1,7 +1,7 @@
 from unittest import TestCase, main, util
 from lark import Tree, Token
 
-util._MAX_LENGTH = 999999
+util._MAX_LENGTH = 999999  # type: ignore
 
 
 class TestGrammar(TestCase):

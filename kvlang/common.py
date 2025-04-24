@@ -1,3 +1,3 @@
 from os.path import dirname, abspath, join
 
-ROOT = dirname(abspath(__file__))
+ROOT: str = dirname(abspath(__file__))
