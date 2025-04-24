@@ -12,7 +12,7 @@ class TestGrammar(TestCase):
         self.assertEqual(out, Tree(
             Token('RULE', 'start'), [
                 Tree(Token('RULE', 'header'), [
-                    Token('KV_VERSION', text)
+                    Token('KIVY_VERSION', text)
                 ]),
                 Tree(Token('RULE', 'content'), [])
             ]
@@ -25,7 +25,7 @@ class TestGrammar(TestCase):
         self.assertEqual(out, Tree(
             Token('RULE', 'start'), [
                 Tree(Token('RULE', 'header'), [
-                    Token('KV_VERSION', text.rstrip("\n")),
+                    Token('KIVY_VERSION', text.rstrip("\n")),
                     Token("NEWLINE", "\n")
                 ]),
                 Tree(Token('RULE', 'content'), [])

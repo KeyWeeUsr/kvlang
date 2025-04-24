@@ -1,8 +1,8 @@
 start: header? content
 
-header: KV_VERSION NEWLINE?
+header: KIVY_VERSION NEWLINE?
 
-KV_VERSION: "#:" "kivy" WHITESPACE VERSION
+KIVY_VERSION: "#:" "kivy" WHITESPACE VERSION
 
 VERSION: DIGIT ("." DIGIT)+
 
