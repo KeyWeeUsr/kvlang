@@ -5,75 +5,111 @@ util._MAX_LENGTH = 999999  # type: ignore
 
 
 class TestGrammar(TestCase):
-    def test_kivy_version_lone(self):
+    def test_empty(self):
         from kvlang import parse
-        text = "#:kivy 1.0"
-        out = parse(text)
-        self.assertEqual(out, Tree(
-            Token('RULE', 'start'), [
-                Tree(Token('RULE', 'header'), [
-                    Token('KIVY_VERSION', text)
-                ]),
-                Tree(Token('RULE', 'content'), [])
-            ]
-        ))
+        self.assertEqual(parse(""), Tree(Token('RULE', 'start'), []))
 
     def test_kivy_version_newlined(self):
         from kvlang import parse
-        text = "#:kivy 1.0\n"
-        out = parse(text)
-        self.assertEqual(out, Tree(
-            Token('RULE', 'start'), [
-                Tree(Token('RULE', 'header'), [
-                    Token('KIVY_VERSION', text.rstrip("\n")),
-                    Token("NEWLINE", "\n")
+        major = "1"
+        minor = "0"
+        text = f"#:kivy {major}.{minor}\n"
+        self.assertEqual(parse(text), Tree(Token("RULE", "start"), [
+            Tree(Token("RULE", "special"), [
+                Tree(Token("RULE", "special_directive"), [
+                    Tree(Token("RULE", "kivy_version"), [
+                        Token("WHITESPACE", " "),
+                        Tree(Token("RULE", "version"), [
+                            Token("V_MAJOR", major),
+                            Token("V_MINOR", minor)
+                        ])
+                    ])
                 ]),
-                Tree(Token('RULE', 'content'), [])
-            ]
-        ))
-
-    def test_kv_version_lone(self):
-        from kvlang import parse
-        text = "#:kv 1.0"
-        out = parse(text)
-        self.assertEqual(out, Tree(
-            Token('RULE', 'start'), [
-                Tree(Token('RULE', 'header'), [
-                    Token('KV_VERSION', text)
-                ]),
-                Tree(Token('RULE', 'content'), [])
-            ]
-        ))
+                Token("NEWLINE", "\n")
+            ])
+        ]))
 
     def test_kv_version_newlined(self):
         from kvlang import parse
-        text = "#:kv 1.0\n"
-        out = parse(text)
-        self.assertEqual(out, Tree(
-            Token('RULE', 'start'), [
-                Tree(Token('RULE', 'header'), [
-                    Token('KV_VERSION', text.rstrip("\n")),
-                    Token("NEWLINE", "\n")
+        major = "1"
+        minor = "0"
+        text = f"#:kv {major}.{minor}\n"
+        self.assertEqual(parse(text), Tree(Token("RULE", "start"), [
+            Tree(Token("RULE", "special"), [
+                Tree(Token("RULE", "special_directive"), [
+                    Tree(Token("RULE", "kv_version"), [
+                        Token("WHITESPACE", " "),
+                        Tree(Token("RULE", "version"), [
+                            Token("V_MAJOR", major),
+                            Token("V_MINOR", minor)
+                        ])
+                    ])
                 ]),
-                Tree(Token('RULE', 'content'), [])
-            ]
-        ))
+                Token("NEWLINE", "\n")
+            ])
+        ]))
 
     def test_kivy_kv_version_newlined(self):
         from kvlang import parse
-        kv = "#:kv 1.0"
-        kivy = "#:kivy 1.0"
-        out = parse("\n".join([kv, kivy]))
-        self.assertEqual(out, Tree(
-            Token('RULE', 'start'), [
-                Tree(Token('RULE', 'header'), [
-                    Token('KV_VERSION', kv),
-                    Token("NEWLINE", "\n"),
-                    Token('KIVY_VERSION', kivy)
+        major = "1"
+        minor = "0"
+        text = f"#:kv {major}.{minor}\n#:kivy {major}.{minor}\n"
+        self.assertEqual(parse(text), Tree(Token('RULE', 'start'), [
+            Tree(Token('RULE', 'special'), [
+                Tree(Token('RULE', 'special_directive'), [
+                    Tree(Token('RULE', 'kv_version'), [
+                        Token('WHITESPACE', ' '),
+                        Tree(Token('RULE', 'version'), [
+                            Token('V_MAJOR', major),
+                            Token('V_MINOR', minor)
+                        ])])
                 ]),
-                Tree(Token('RULE', 'content'), [])
-            ]
-        ))
+                Token('NEWLINE', '\n')
+            ]),
+            Tree(Token('RULE', 'special'), [
+                Tree(Token('RULE', 'special_directive'), [
+                    Tree(Token('RULE', 'kivy_version'), [
+                        Token('WHITESPACE', ' '),
+                        Tree(Token('RULE', 'version'), [
+                            Token('V_MAJOR', major),
+                            Token('V_MINOR', minor)
+                        ])])
+                ]),
+                Token('NEWLINE', '\n')
+            ]),
+        ]))
+
+
+class TestQuirks(TestCase):
+    def test_number_as_variable(self):
+        """
+        supports quirks like these
+        - #:set <any string> <any eval()-ready expr>
+          - e.g.: #:set 0a "abc"
+          (Pdb) from kivy.app import App
+          (Pdb) App._running_app = App()
+          (Pdb) from kivy.lang.parser import global_idmap
+          (Pdb) global_idmap["0a"]
+          3
+        """
+        from kvlang import parse
+        for test in [("#:set 0a", "'thing'"), ("#:set 0a", '"thing"')]:
+            prefix, value = test
+            self.assertEqual(
+                parse(" ".join([prefix, value]) + "\n"),
+                Tree(Token("RULE", "start"), [
+                    Tree(Token("RULE", "special"), [
+                        Tree(Token("RULE", "special_directive"), [
+                            Tree(Token("RULE", "set"), [
+                                Token("SET_NAME", "0a"),
+                                Token("WHITESPACE", " "),
+                                Token("SET_VALUE", value)
+                            ])
+                        ]),
+                        Token("NEWLINE", "\n")
+                    ])
+                ])
+            )
 
 
 if __name__ == "__main__":
