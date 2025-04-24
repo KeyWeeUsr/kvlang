@@ -1,1 +1,17 @@
-#
+start: header? content
+
+header: KV_VERSION NEWLINE?
+
+KV_VERSION: "#:" "kivy" WHITESPACE VERSION
+
+VERSION: DIGIT ("." DIGIT)+
+
+content: (line NEWLINE)*
+
+line: /[^\n]+/
+
+NEWLINE: /\r?\n/
+WHITESPACE: " "+
+DIGIT: /[0-9]+/
+
+%ignore /[ \t\f]+/
