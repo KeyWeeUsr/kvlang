@@ -13,6 +13,11 @@ class TreeIndenter(Indenter):
     DEDENT_type = '_DEDENT'
     tab_len = 4
 
+    def handle_NL(self, token):
+        if '\n' not in token:
+            return
+        yield from super().handle_NL(token)
+
 
 def create_parser(transformer: type[Transformer] = KvTransformer) -> Lark:
     return Lark(
