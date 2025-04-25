@@ -7,7 +7,7 @@ util._MAX_LENGTH = 999999  # type: ignore
 class TestGrammar(TestCase):
     def test_empty(self):
         from kvlang import parse
-        self.assertEqual(parse(""), Tree(Token('RULE', 'start'), []))
+        self.assertEqual(parse(""), Tree(Token("RULE", "start"), []))
 
     def test_kivy_version_newlined(self):
         from kvlang import parse
@@ -24,8 +24,7 @@ class TestGrammar(TestCase):
                             Token("V_MINOR", minor)
                         ])
                     ])
-                ]),
-                Token("NEWLINE", "\n")
+                ])
             ])
         ]))
 
@@ -44,8 +43,7 @@ class TestGrammar(TestCase):
                             Token("V_MINOR", minor)
                         ])
                     ])
-                ]),
-                Token("NEWLINE", "\n")
+                ])
             ])
         ]))
 
@@ -54,28 +52,26 @@ class TestGrammar(TestCase):
         major = "1"
         minor = "0"
         text = f"#:kv {major}.{minor}\n#:kivy {major}.{minor}\n"
-        self.assertEqual(parse(text), Tree(Token('RULE', 'start'), [
-            Tree(Token('RULE', 'special'), [
-                Tree(Token('RULE', 'special_directive'), [
-                    Tree(Token('RULE', 'kv_version'), [
-                        Token('WHITESPACE', ' '),
-                        Tree(Token('RULE', 'version'), [
-                            Token('V_MAJOR', major),
-                            Token('V_MINOR', minor)
+        self.assertEqual(parse(text), Tree(Token("RULE", "start"), [
+            Tree(Token("RULE", "special"), [
+                Tree(Token("RULE", "special_directive"), [
+                    Tree(Token("RULE", "kv_version"), [
+                        Token("WHITESPACE", " "),
+                        Tree(Token("RULE", "version"), [
+                            Token("V_MAJOR", major),
+                            Token("V_MINOR", minor)
                         ])])
-                ]),
-                Token('NEWLINE', '\n')
+                ])
             ]),
-            Tree(Token('RULE', 'special'), [
-                Tree(Token('RULE', 'special_directive'), [
-                    Tree(Token('RULE', 'kivy_version'), [
-                        Token('WHITESPACE', ' '),
-                        Tree(Token('RULE', 'version'), [
-                            Token('V_MAJOR', major),
-                            Token('V_MINOR', minor)
+            Tree(Token("RULE", "special"), [
+                Tree(Token("RULE", "special_directive"), [
+                    Tree(Token("RULE", "kivy_version"), [
+                        Token("WHITESPACE", " "),
+                        Tree(Token("RULE", "version"), [
+                            Token("V_MAJOR", major),
+                            Token("V_MINOR", minor)
                         ])])
-                ]),
-                Token('NEWLINE', '\n')
+                ])
             ]),
         ]))
 
@@ -127,8 +123,7 @@ class TestQuirks(TestCase):
                                 Token("WHITESPACE", " "),
                                 Token("SET_VALUE", value)
                             ])
-                        ]),
-                        Token("NEWLINE", "\n")
+                        ])
                     ])
                 ])
             )
