@@ -1,4 +1,4 @@
-start: (special | widget_tree)*
+start: (special | widget_tree | widget_rule_tree )*
 
 special: "#:" special_directive _NL?
 special_directive: kivy_version
@@ -23,6 +23,9 @@ SET_NAME: ANY
 SET_VALUE: ANY
 set: "set" SET_NAME WHITESPACE SET_VALUE
 
+widget_rule_tree: widget_rule _NL? (_INDENT widget_tree+ _DEDENT)?
+widget_rule: WIDGET_RULE ":"
+WIDGET_RULE: /<[A-Za-z0-9]+>/
 widget_tree: widget _NL? (_INDENT widget_tree+ _DEDENT)?
 widget: WIDGET ":"
 WIDGET: /[A-Za-z0-9]+/
