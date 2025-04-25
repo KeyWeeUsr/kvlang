@@ -42,7 +42,7 @@ BoxLayout:
    assert str(parser.global_idmap["!š"]) == "<built-in function time>" \
    and \
    self.text == "True"
- Label:
+ Label:#:set no_value 123
   text: str(parser.global_idmap["0x"] == 3)
   on_parent:
    # multiline not wrapped, but simply shoved to exec()
@@ -62,10 +62,15 @@ BoxLayout:
   #-> triggers version error during parsing, multiple occurrences are fine
   # (6e23344/kivy/lang/parser.py#L504)
 
- Label:
-  text: str(str(sys) == "<module 'sys' (built-in)>")
-  on_parent:
+ Label: #:set no_value 456
+  text: str(str(sys) == "<module 'sys' (built-in)>") #:set no_value 789
+  on_parent: #:set no_value 012
    assert str(sys) == "<module 'sys' (built-in)>" and self.text == "True"
+
+ Label:
+  text: str(parser.global_idmap.get("no_value") is None)
+  on_parent:
+   assert parser.global_idmap.get("no_value") is None and self.text == "True"
 """
 
 
@@ -118,7 +123,7 @@ class TestLangQuirks(TestCase):
         from kivy.lang import Builder  # type: ignore
         root = Builder.load_string(SAMPLE)
         assert root.evaluated
-        assert len(root.children) == 1 + 3, root.children
+        assert len(root.children) == 1 + 4, root.children
         for child in root.children:
             if "Widget" in str(child):
                 continue
