@@ -1,6 +1,6 @@
-start: (special | widget)*
+start: (special | widget_tree)*
 
-special: "#:" special_directive NEWLINE
+special: "#:" special_directive _NL?
 special_directive: kivy_version
     | kv_version
     | import
@@ -23,8 +23,8 @@ SET_NAME: ANY
 SET_VALUE: ANY
 set: "set" SET_NAME WHITESPACE SET_VALUE
 
-content: widget
-widget: WIDGET ":" COMMENT?
+widget_tree: widget _NL? (_INDENT widget_tree+ _DEDENT)?
+widget: WIDGET ":"
 WIDGET: /[A-Za-z0-9]+/
 COMMENT: /#(?!:)[^\n]*/
 
@@ -33,7 +33,8 @@ line: /[^\n]+/
 // only (multi-)space supported in SPECIAL
 WHITESPACE: " "+
 ANY: /\S+/
+_NL: (/\r?\n[\t ]*/ | COMMENT)+
 
 %ignore /[ \t\f]+/
 %ignore COMMENT
-%import common.NEWLINE
+%declare _INDENT _DEDENT
