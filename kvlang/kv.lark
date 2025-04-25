@@ -29,7 +29,7 @@ WIDGET_RULE: /[A-Za-z0-9]+/
 widget_tree: widget _NL* (_INDENT (widget_tree | widget_property)+ _DEDENT)?
 widget: WIDGET ":"?
 widget_property: PROPERTY_NAME ":" PROPERTY_VALUE _NL?
-WIDGET: /[A-Z][A-Za-z0-9]+/
+WIDGET: /[A-Z][A-Za-z0-9]+/ | "canvas" (".after" | ".before")?
 PROPERTY_NAME: /[a-z_]+/
 PROPERTY_VALUE: ANY
 COMMENT: /\s*#(?!:)[^\n]*/
