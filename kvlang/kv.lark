@@ -23,12 +23,15 @@ SET_NAME: ANY
 SET_VALUE: ANY
 set: "set" SET_NAME WHITESPACE SET_VALUE
 
-widget_rule_tree: widget_rule _NL? (_INDENT widget_tree+ _DEDENT)?
+widget_rule_tree: widget_rule _NL* (_INDENT (widget_tree | widget_property)+ _DEDENT)?
 widget_rule: "<" WIDGET_RULE ">" ":"
 WIDGET_RULE: /[A-Za-z0-9]+/
-widget_tree: widget _NL? (_INDENT widget_tree+ _DEDENT)?
+widget_tree: widget _NL* (_INDENT (widget_tree | widget_property)+ _DEDENT)?
 widget: WIDGET ":"
-WIDGET: /[A-Za-z0-9]+/
+widget_property: PROPERTY_NAME ":" PROPERTY_VALUE _NL?
+WIDGET: /[A-Z][A-Za-z0-9]+/
+PROPERTY_NAME: /[a-z_]+/
+PROPERTY_VALUE: ANY
 COMMENT: /#(?!:)[^\n]*/
 
 line: /[^\n]+/
@@ -36,7 +39,7 @@ line: /[^\n]+/
 // only (multi-)space supported in SPECIAL
 WHITESPACE: " "+
 ANY: /\S+/
-_NL: (/\r?\n[\t ]*/ | COMMENT)+
+_NL: (/\r?\n[\t ]*/)+
 
 %ignore /[ \t\f]+/
 %ignore COMMENT
