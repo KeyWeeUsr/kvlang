@@ -24,7 +24,9 @@ SET_VALUE: ANY
 set: "set" SET_NAME WHITESPACE SET_VALUE
 
 content: widget
-widget: /[a-z0-9]+/ ":"
+widget: WIDGET ":" COMMENT?
+WIDGET: /[A-Za-z0-9]+/
+COMMENT: /#(?!:)[^\n]*/
 
 line: /[^\n]+/
 
@@ -33,4 +35,5 @@ WHITESPACE: " "+
 ANY: /\S+/
 
 %ignore /[ \t\f]+/
+%ignore COMMENT
 %import common.NEWLINE
