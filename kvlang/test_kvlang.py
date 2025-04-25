@@ -133,7 +133,7 @@ class TestGrammar(TestCase):
         self.assertEqual(parse(text), Tree(Token("RULE", "start"), [
             Tree(Token("RULE", "widget_rule_tree"), [
                 Tree(Token("RULE", "widget_rule"), [
-                    Token("WIDGET_RULE", "<MyWidget>")
+                    Token("WIDGET_RULE", "MyWidget")
                 ])
             ])
         ]))
@@ -144,7 +144,7 @@ class TestGrammar(TestCase):
         self.assertEqual(parse(text), Tree(Token("RULE", "start"), [
             Tree(Token("RULE", "widget_rule_tree"), [
                 Tree(Token("RULE", "widget_rule"), [
-                    Token("WIDGET_RULE", "<MyWidget>")
+                    Token("WIDGET_RULE", "MyWidget")
                 ])
             ])
         ]))
@@ -156,7 +156,7 @@ class TestGrammar(TestCase):
             self.assertEqual(parse(text), Tree(Token("RULE", "start"), [
                 Tree(Token("RULE", "widget_rule_tree"), [
                     Tree(Token("RULE", "widget_rule"), [
-                        Token("WIDGET_RULE", "<MyWidget>")
+                        Token("WIDGET_RULE", "MyWidget")
                     ])
                 ])
             ]))
@@ -168,7 +168,7 @@ class TestGrammar(TestCase):
             self.assertEqual(parse(text), Tree(Token("RULE", "start"), [
                 Tree(Token("RULE", "widget_rule_tree"), [
                     Tree(Token("RULE", "widget_rule"), [
-                        Token("WIDGET_RULE", "<MyWidget>")
+                        Token("WIDGET_RULE", "MyWidget")
                     ]),
                     Tree(Token("RULE", "widget_tree"), [
                         Tree(Token("RULE", "widget"), [

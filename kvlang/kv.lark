@@ -24,8 +24,8 @@ SET_VALUE: ANY
 set: "set" SET_NAME WHITESPACE SET_VALUE
 
 widget_rule_tree: widget_rule _NL? (_INDENT widget_tree+ _DEDENT)?
-widget_rule: WIDGET_RULE ":"
-WIDGET_RULE: /<[A-Za-z0-9]+>/
+widget_rule: "<" WIDGET_RULE ">" ":"
+WIDGET_RULE: /[A-Za-z0-9]+/
 widget_tree: widget _NL? (_INDENT widget_tree+ _DEDENT)?
 widget: WIDGET ":"
 WIDGET: /[A-Za-z0-9]+/
