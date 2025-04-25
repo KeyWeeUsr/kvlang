@@ -24,10 +24,10 @@ SET_VALUE: ANY
 set: "set" SET_NAME WHITESPACE SET_VALUE
 
 widget_rule_tree: widget_rule _NL* (_INDENT (widget_tree | widget_property)+ _DEDENT)?
-widget_rule: "<" WIDGET_RULE ">" ":"
+widget_rule: "<" WIDGET_RULE ">" ":"?
 WIDGET_RULE: /[A-Za-z0-9]+/
 widget_tree: widget _NL* (_INDENT (widget_tree | widget_property)+ _DEDENT)?
-widget: WIDGET ":"
+widget: WIDGET ":"?
 widget_property: PROPERTY_NAME ":" PROPERTY_VALUE _NL?
 WIDGET: /[A-Z][A-Za-z0-9]+/
 PROPERTY_NAME: /[a-z_]+/
