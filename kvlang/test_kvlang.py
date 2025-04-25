@@ -161,6 +161,28 @@ class TestGrammar(TestCase):
                 ])
             ]))
 
+    def test_root_widget_tree(self):
+        from kvlang import parse
+        for prefix, comment in (("", "text"), (" ", " text"), ("    ", "    text")):
+            text = "<MyWidget>:\n Widget:\n  Widget:"
+            self.assertEqual(parse(text), Tree(Token("RULE", "start"), [
+                Tree(Token("RULE", "widget_rule_tree"), [
+                    Tree(Token("RULE", "widget_rule"), [
+                        Token("WIDGET_RULE", "<MyWidget>")
+                    ]),
+                    Tree(Token("RULE", "widget_tree"), [
+                        Tree(Token("RULE", "widget"), [
+                            Token("WIDGET", "Widget")
+                        ]),
+                        Tree(Token("RULE", "widget_tree"), [
+                            Tree(Token("RULE", "widget"), [
+                                Token("WIDGET", "Widget")
+                            ])
+                        ])
+                    ])
+                ])
+            ]))
+
 
 class TestQuirks(TestCase):
     def test_number_as_variable(self):
