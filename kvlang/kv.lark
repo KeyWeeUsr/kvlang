@@ -32,7 +32,7 @@ widget_property: PROPERTY_NAME ":" PROPERTY_VALUE _NL?
 WIDGET: /[A-Z][A-Za-z0-9]+/
 PROPERTY_NAME: /[a-z_]+/
 PROPERTY_VALUE: ANY
-COMMENT: /#(?!:)[^\n]*/
+COMMENT: /\s*#(?!:)[^\n]*/
 
 line: /[^\n]+/
 

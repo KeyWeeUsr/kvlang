@@ -10,8 +10,10 @@ util._MAX_LENGTH = 999999  # type: ignore
 # 6e23344/doc/sources/gettingstarted/rules.rst#L18
 GETTING_STARTED = """
 <LoginScreen>:  # every class in your app can be represented by a rule like
+                # this in the kv file
     GridLayout: # this is how you add your widget/layout to the parent
-        rows: 2
+                # (note the indentation).
+        rows: 2 # this how you set each property of your widget/layout
 """
 
 
