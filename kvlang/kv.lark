@@ -1,4 +1,4 @@
-start: (special | widget_tree | widget_rule_tree )*
+start: (_NL | special | widget_tree | widget_rule_tree)*
 
 special: "#:" special_directive _NL?
 special_directive: kivy_version
