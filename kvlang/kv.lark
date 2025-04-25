@@ -23,13 +23,64 @@ SET_NAME: ANY
 SET_VALUE: ANY
 set: "set" SET_NAME WHITESPACE SET_VALUE
 
-widget_rule_tree: widget_rule _NL* (_INDENT (widget_tree | widget_property)+ _DEDENT)?
+widget_rule_tree: widget_rule _NL* (_INDENT (widget_tree | widget_property | canvas_tree)+ _DEDENT)?
 widget_rule: "<" WIDGET_RULE ">" ":"?
 WIDGET_RULE: /[A-Za-z0-9]+/
-widget_tree: widget _NL* (_INDENT (widget_tree | widget_property)+ _DEDENT)?
+widget_tree: widget _NL* (_INDENT (widget_tree | widget_property | canvas_tree)+ _DEDENT)?
 widget: WIDGET ":"?
 widget_property: PROPERTY_NAME ":" PROPERTY_VALUE _NL?
-WIDGET: /[A-Z][A-Za-z0-9]+/ | "canvas" (".after" | ".before")?
+
+canvas_tree: canvas ":" _NL* (_INDENT canvas_instruction_tree* _DEDENT)?
+canvas: CANVAS
+    | CANVAS_BEFORE
+    | CANVAS_AFTER
+CANVAS: "canvas"
+CANVAS_BEFORE: CANVAS ".before"
+CANVAS_AFTER: CANVAS ".after"
+canvas_instruction_property: PROPERTY_NAME ":" PROPERTY_VALUE _NL?
+canvas_instruction_tree: canvas_instruction _NL* (_INDENT canvas_instruction_property* _DEDENT)?
+canvas_instruction: CANVAS_INSTRUCTION ":"? _NL?
+
+CANVAS_INSTRUCTION: "ApplyContextMatrix" // 1.6.0+
+    | "Bezier" // 1.0.8+
+    | "BindTexture"
+    | "BorderImage"
+    | "BoxShadow" // 2.2.0+
+    | "Callback"
+    | "ChangeState" // 1.6.0+
+    | "ClearBuffers" // 1.3.0+
+    | "ClearColor" // 1.3.0+
+    | "Color"
+    | "Ellipse"
+    | "Fbo"
+    | "Line"
+    | "LoadIdentity"
+    | "Mesh"
+    | "Point"
+    | "PopMatrix"
+    | "PopState"
+    | "PushMatrix"
+    | "PushState"
+    | "Quad"
+    | "Rectangle"
+    | "Rotate"
+    | "RoundedRectangle"
+    | "Scale"
+    | "SmoothEllipse" // 2.3.0+
+    | "SmoothLine" // 1.9.0+
+    | "SmoothQuad" // 2.3.0+
+    | "SmoothRectangle" // 2.3.0+
+    | "SmoothRoundedRectangle" // 2.3.0+
+    | "SmoothTriangle" // 2.3.0+
+    | "StencilPush"
+    | "StencilPop"
+    | "StencilPush"
+    | "StencilUnUse"
+    | "StencilUse"
+    | "Translate"
+    | "Triangle"
+    | "UpdateNormalMatrix"
+WIDGET: /(?!CANVAS)[A-Z][A-Za-z0-9]+/
 PROPERTY_NAME: /[a-z_]+/
 PROPERTY_VALUE: ANY
 COMMENT: /\s*#(?!:)[^\n]*/

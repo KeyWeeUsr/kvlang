@@ -56,28 +56,28 @@ class TestExamples(TestCase):
                 Tree(Token('RULE', 'widget_rule'), [
                     Token('WIDGET_RULE', 'MyWidget')
                 ]),
-                Tree(Token('RULE', 'widget_tree'), [
-                    Tree(Token('RULE', 'widget'), [
-                        Token('WIDGET', 'canvas')
+                Tree(Token('RULE', 'canvas_tree'), [
+                    Tree(Token('RULE', 'canvas'), [
+                        Token('CANVAS', 'canvas')
                     ]),
-                    Tree(Token('RULE', 'widget_tree'), [
-                        Tree(Token('RULE', 'widget'), [
-                            Token('WIDGET', 'Color')
+                    Tree(Token('RULE', 'canvas_instruction_tree'), [
+                        Tree(Token('RULE', 'canvas_instruction'), [
+                            Token('CANVAS_INSTRUCTION', 'Color')
                         ]),
-                        Tree(Token('RULE', 'widget_property'), [
+                        Tree(Token('RULE', 'canvas_instruction_property'), [
                             Token('PROPERTY_NAME', 'rgba'),
                             Token('PROPERTY_VALUE', '.5,.5,.5,.5')
                         ])
                     ]),
-                    Tree(Token('RULE', 'widget_tree'), [
-                        Tree(Token('RULE', 'widget'), [
-                            Token('WIDGET', 'Ellipse')
+                    Tree(Token('RULE', 'canvas_instruction_tree'), [
+                        Tree(Token('RULE', 'canvas_instruction'), [
+                            Token('CANVAS_INSTRUCTION', 'Ellipse')
                         ]),
-                        Tree(Token('RULE', 'widget_property'), [
+                        Tree(Token('RULE', 'canvas_instruction_property'), [
                             Token('PROPERTY_NAME', 'size'),
                             Token('PROPERTY_VALUE', 'self.size')
                         ]),
-                        Tree(Token('RULE', 'widget_property'), [
+                        Tree(Token('RULE', 'canvas_instruction_property'), [
                             Token('PROPERTY_NAME', 'pos'),
                             Token('PROPERTY_VALUE', 'self.pos')
                         ])
