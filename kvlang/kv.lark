@@ -37,13 +37,12 @@ PROPERTY_VALUE_BLOCK_LINE: /[^\s#\n]+/
 property_value_block_line: PROPERTY_VALUE_BLOCK_LINE
 property_value_block: _NL _INDENT property_value_block_line* _NL _DEDENT
 
-canvas_tree: canvas ":" _NL* (_INDENT canvas_instruction_tree* _DEDENT)?
 canvas: CANVAS
-    | CANVAS_BEFORE
-    | CANVAS_AFTER
+    | CANVAS "." (CANVAS_BEFORE | CANVAS_AFTER)
+canvas_tree: canvas ":" _NL* (_INDENT canvas_instruction_tree* _DEDENT)?
 CANVAS: "canvas"
-CANVAS_BEFORE: CANVAS ".before"
-CANVAS_AFTER: CANVAS ".after"
+CANVAS_BEFORE: "before"
+CANVAS_AFTER: "after"
 canvas_instruction_property: PROPERTY_NAME ":" property_value
 canvas_instruction_tree: canvas_instruction _NL* (_INDENT canvas_instruction_property* _DEDENT)?
 canvas_instruction: CANVAS_INSTRUCTION ":"? _NL?
