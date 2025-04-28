@@ -60,7 +60,8 @@ class TestGrammar(TestCase):
                         Tree(Token("RULE", "version"), [
                             Token("V_MAJOR", major),
                             Token("V_MINOR", minor)
-                        ])])
+                        ])
+                    ])
                 ])
             ]),
             Tree(Token("RULE", "special"), [
@@ -70,7 +71,8 @@ class TestGrammar(TestCase):
                         Tree(Token("RULE", "version"), [
                             Token("V_MAJOR", major),
                             Token("V_MINOR", minor)
-                        ])])
+                        ])
+                    ])
                 ])
             ]),
         ]))
@@ -197,8 +199,7 @@ class TestQuirks(TestCase):
           3
         """
         from kvlang import parse
-        for test in [("#:set 0a", "'thing'"), ("#:set 0a", '"thing"')]:
-            prefix, value = test
+        for prefix, value in [("#:set 0a", "'thing'"), ("#:set 0a", '"thing"')]:
             self.assertEqual(
                 parse(" ".join([prefix, value]) + "\n"),
                 Tree(Token("RULE", "start"), [

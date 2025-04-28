@@ -28,7 +28,14 @@ widget_rule: "<" WIDGET_RULE ">" ":"?
 WIDGET_RULE: /[A-Za-z0-9]+/
 widget_tree: widget _NL* (_INDENT (widget_tree | widget_property | canvas_tree)+ _DEDENT)?
 widget: WIDGET ":"?
-widget_property: PROPERTY_NAME ":" PROPERTY_VALUE _NL?
+widget_property: PROPERTY_NAME ":" property_value
+
+property_value: property_value_inline | property_value_block
+property_value_inline: " "? PROPERTY_VALUE_INLINE " "? _NL
+PROPERTY_VALUE_INLINE: /[^#\n]+/
+PROPERTY_VALUE_BLOCK_LINE: /[^\s#\n]+/
+property_value_block_line: PROPERTY_VALUE_BLOCK_LINE
+property_value_block: _NL _INDENT property_value_block_line* _NL _DEDENT
 
 canvas_tree: canvas ":" _NL* (_INDENT canvas_instruction_tree* _DEDENT)?
 canvas: CANVAS
@@ -37,7 +44,7 @@ canvas: CANVAS
 CANVAS: "canvas"
 CANVAS_BEFORE: CANVAS ".before"
 CANVAS_AFTER: CANVAS ".after"
-canvas_instruction_property: PROPERTY_NAME ":" PROPERTY_VALUE _NL?
+canvas_instruction_property: PROPERTY_NAME ":" property_value
 canvas_instruction_tree: canvas_instruction _NL* (_INDENT canvas_instruction_property* _DEDENT)?
 canvas_instruction: CANVAS_INSTRUCTION ":"? _NL?
 
@@ -82,7 +89,7 @@ CANVAS_INSTRUCTION: "ApplyContextMatrix" // 1.6.0+
     | "UpdateNormalMatrix"
 WIDGET: /(?!CANVAS)[A-Z][A-Za-z0-9]+/
 PROPERTY_NAME: /[a-z_]+/
-PROPERTY_VALUE: ANY
+PROPERTY_VALUE: /[a-zA-Z_\.][a-zA-Z0-9_\.]*/
 COMMENT: /\s*#(?!:)[^\n]*/
 
 line: /[^\n]+/
