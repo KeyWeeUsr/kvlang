@@ -2,54 +2,24 @@
 Examples from Kivy documentation (MIT)
 """
 
+from os.path import dirname, join, abspath
 from unittest import TestCase, main, util
+
 from lark import Tree, Token
 
 util._MAX_LENGTH = 999999  # type: ignore
 
-# 6e23344/doc/sources/gettingstarted/rules.rst#L18
-GETTING_STARTED = """
-<LoginScreen>:  # every class in your app can be represented by a rule like
-                # this in the kv file
-    GridLayout: # this is how you add your widget/layout to the parent
-                # (note the indentation).
-        rows: 2 # this how you set each property of your widget/layout
-"""
 
-# 6e23344/doc/sources/images/gs-drawing.png
-GS_DRAWING = """
-#kivy 1.0
-<MyWidget>
-    canvas:
-        Color:
-            rgba: .5, .5, .5, .5
-        Ellipse:
-            size: self.size
-            pos: self.pos
-"""
+def load(name: str) -> str:
+    folder = dirname(abspath(__file__))
+    with open(join(folder, "examples", name), encoding="utf-8") as file:
+        return file.read()
 
-# 6e23344/doc/sources/guide/widgets.rst#L216
-PG_WIDGETS = """
-BoxLayout:
-    Button:
-        text: 'Button 1'
-        # default size_hint is 1, 1, we don't need to specify it explicitly
-        # however it's provided here to make things clear
-        size_hint: 1, 1
-"""
-
-# 6e23344/doc/sources/guide/images/size_hint[b_].jpg
-PG_WIDGETS_FLOAT = """
-BoxLayout:
-    Button:
-        text: 'Button 1'
-        size_hint: 0.5, 0.5
-"""
 
 class TestExamples(TestCase):
     def test_getting_started(self):
         from kvlang import parse
-        self.assertEqual(parse(GETTING_STARTED), Tree(Token("RULE", "start"), [
+        tree = Tree(Token("RULE", "start"), [
             Tree(Token("RULE", "widget_rule_tree"), [
                 Tree(Token("RULE", "widget_rule"), [
                     Token("WIDGET_RULE", "LoginScreen")
@@ -68,11 +38,12 @@ class TestExamples(TestCase):
                     ])
                 ])
             ])
-        ]))
+        ])
+        self.assertEqual(parse(load("getting-started.kv")), tree)
 
     def test_getting_started_drawing(self):
         from kvlang import parse
-        self.assertEqual(parse(GS_DRAWING), Tree(Token("RULE", "start"), [
+        tree = Tree(Token("RULE", "start"), [
             Tree(Token("RULE", "widget_rule_tree"), [
                 Tree(Token("RULE", "widget_rule"), [
                     Token("WIDGET_RULE", "MyWidget")
@@ -122,11 +93,12 @@ class TestExamples(TestCase):
                     ])
                 ])
             ])
-        ]))
+        ])
+        self.assertEqual(parse(load("gs-drawing.kv")), tree)
 
     def test_programming_guide_widgets(self):
         from kvlang import parse
-        self.assertEqual(parse(PG_WIDGETS), Tree(Token("RULE", "start"), [
+        tree = Tree(Token("RULE", "start"), [
             Tree(Token("RULE", "widget_tree"), [
                 Tree(Token("RULE", "widget"), [
                     Token("WIDGET", "BoxLayout")
@@ -153,12 +125,13 @@ class TestExamples(TestCase):
                     ])
                 ])
             ])
-        ]))
+        ])
+        self.assertEqual(parse(load("pg-widgets.kv")), tree)
 
     def test_programming_guide_widgets_float(self):
         from kvlang import parse
         self.assertEqual(
-            parse(PG_WIDGETS_FLOAT), Tree(Token("RULE", "start"), [
+            parse(load("pg-widgets-float.kv")), Tree(Token("RULE", "start"), [
                 Tree(Token("RULE", "widget_tree"), [
                     Tree(Token("RULE", "widget"), [
                         Token("WIDGET", "BoxLayout")
