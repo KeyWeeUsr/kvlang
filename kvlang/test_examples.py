@@ -28,6 +28,23 @@ GS_DRAWING = """
             pos: self.pos
 """
 
+# 6e23344/doc/sources/guide/widgets.rst#L216
+PG_WIDGETS = """
+BoxLayout:
+    Button:
+        text: 'Button 1'
+        # default size_hint is 1, 1, we don't need to specify it explicitly
+        # however it's provided here to make things clear
+        size_hint: 1, 1
+"""
+
+# 6e23344/doc/sources/guide/images/size_hint[b_].jpg
+PG_WIDGETS_FLOAT = """
+BoxLayout:
+    Button:
+        text: 'Button 1'
+        size_hint: 0.5, 0.5
+"""
 
 class TestExamples(TestCase):
     def test_getting_started(self):
@@ -106,6 +123,71 @@ class TestExamples(TestCase):
                 ])
             ])
         ]))
+
+    def test_programming_guide_widgets(self):
+        from kvlang import parse
+        self.assertEqual(parse(PG_WIDGETS), Tree(Token("RULE", "start"), [
+            Tree(Token("RULE", "widget_tree"), [
+                Tree(Token("RULE", "widget"), [
+                    Token("WIDGET", "BoxLayout")
+                ]),
+                Tree(Token("RULE", "widget_tree"), [
+                    Tree(Token("RULE", "widget"), [
+                        Token("WIDGET", "Button")
+                    ]),
+                    Tree(Token("RULE", "widget_property"), [
+                        Token("PROPERTY_NAME", "text"),
+                        Tree(Token("RULE", "property_value"), [
+                            Tree(Token("RULE", "property_value_inline"), [
+                                Token("PROPERTY_VALUE_INLINE", " 'Button 1'")
+                            ])
+                        ])
+                    ]),
+                    Tree(Token("RULE", "widget_property"), [
+                        Token("PROPERTY_NAME", "size_hint"),
+                        Tree(Token("RULE", "property_value"), [
+                            Tree(Token("RULE", "property_value_inline"), [
+                                Token("PROPERTY_VALUE_INLINE", " 1, 1")
+                            ])
+                        ])
+                    ])
+                ])
+            ])
+        ]))
+
+    def test_programming_guide_widgets_float(self):
+        from kvlang import parse
+        self.assertEqual(
+            parse(PG_WIDGETS_FLOAT), Tree(Token("RULE", "start"), [
+                Tree(Token("RULE", "widget_tree"), [
+                    Tree(Token("RULE", "widget"), [
+                        Token("WIDGET", "BoxLayout")
+                    ]),
+                    Tree(Token("RULE", "widget_tree"), [
+                        Tree(Token("RULE", "widget"), [
+                            Token("WIDGET", "Button")
+                        ]),
+                        Tree(Token("RULE", "widget_property"), [
+                            Token("PROPERTY_NAME", "text"),
+                            Tree(Token("RULE", "property_value"), [
+                                Tree(Token("RULE", "property_value_inline"), [
+                                    Token(
+                                        "PROPERTY_VALUE_INLINE", " 'Button 1'"
+                                    )
+                                ])
+                            ])
+                        ]),
+                        Tree(Token("RULE", "widget_property"), [
+                            Token("PROPERTY_NAME", "size_hint"),
+                            Tree(Token("RULE", "property_value"), [
+                                Tree(Token("RULE", "property_value_inline"), [
+                                    Token("PROPERTY_VALUE_INLINE", " 0.5, 0.5")
+                                ])
+                            ])
+                        ])
+                    ])
+                ])
+            ]))
 
 
 if __name__ == "__main__":
