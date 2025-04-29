@@ -51,7 +51,7 @@ class TestExamples(TestCase):
                 lines += [next(file)[4:] for _ in range(6)]
                 break
 
-        self.assertEqual(parse("\n".join(lines)), tree)
+        self.assertEqual(parse("".join(lines)), tree)
 
     def test_getting_started_drawing(self):
         from kvlang import parse
@@ -150,7 +150,7 @@ class TestExamples(TestCase):
                 lines += [next(file)[4:] for _ in range(6)]
                 break
 
-        self.assertEqual(parse("\n".join(lines)), tree)
+        self.assertEqual(parse("".join(lines)), tree)
 
     def test_programming_guide_widgets_float(self):
         from kvlang import parse
@@ -397,7 +397,7 @@ class TestExamples(TestCase):
                 lines += [next(file)[4:] for _ in range(15)]
                 break
 
-        self.assertEqual(parse("\n".join(lines)), tree)
+        self.assertEqual(parse("".join(lines)), tree)
 
     def test_programming_guide_widgets_floatlayout_canvas(self):
         from kvlang import parse
@@ -465,7 +465,7 @@ class TestExamples(TestCase):
                 lines += [next(file)[4:] for _ in range(9)]
                 break
 
-        self.assertEqual(parse("\n".join(lines)), tree)
+        self.assertEqual(parse("".join(lines)), tree)
 
     def test_programming_guide_widgets_floatlayout_canvas_button(self):
         from kvlang import parse
