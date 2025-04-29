@@ -555,9 +555,17 @@ class TestExamples(TestCase):
                 ])
             ])
         ])
-        self.assertEqual(
-            parse(load("pg-widgets-floatlayout-canvas-button.kv")), tree
-        )
+
+        doc = join(KIVY, "doc", "sources", "guide", "widgets.rst")
+        lines = []
+
+        with open(doc, encoding="utf-8") as file:
+            for _ in range(414): next(file)
+            for line in file:
+                lines += [next(file)[4:] for _ in range(12)]
+                break
+
+        self.assertEqual(parse("".join(lines)), tree)
 
     def test_programming_guide_widgets_customlayout(self):
         from kvlang import parse
