@@ -184,7 +184,8 @@ class TestExamples(TestCase):
                         ])
                     ])
                 ])
-            ]))
+            ])
+        )
 
     def test_programming_guide_widgets_multi(self):
         from kvlang import parse
@@ -279,6 +280,7 @@ class TestExamples(TestCase):
 
     def test_programming_guide_widgets_floatlayout(self):
         from kvlang import parse
+
         tree = Tree(Token("RULE", "start"), [
             Tree(Token("RULE", "widget_tree"), [
                 Tree(Token("RULE", "widget"), [
@@ -382,7 +384,20 @@ class TestExamples(TestCase):
                 ])
             ])
         ])
-        self.assertEqual(parse(load("pg-widgets-floatlayout.kv")), tree)
+
+        doc = join(KIVY, "doc", "sources", "guide", "widgets.rst")
+        lines = []
+
+        with open(doc, encoding="utf-8") as file:
+            for _ in range(280): next(file)
+            for line in file:
+                if ".. code-block:: kv" not in line:
+                    continue
+                next(file)
+                lines += [next(file)[4:] for _ in range(15)]
+                break
+
+        self.assertEqual(parse("\n".join(lines)), tree)
 
     def test_programming_guide_widgets_floatlayout_canvas(self):
         from kvlang import parse
