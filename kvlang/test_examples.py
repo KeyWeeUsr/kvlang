@@ -452,7 +452,20 @@ class TestExamples(TestCase):
                 ])
             ])
         ])
-        self.assertEqual(parse(load("pg-widgets-floatlayout-canvas.kv")), tree)
+
+        doc = join(KIVY, "doc", "sources", "guide", "widgets.rst")
+        lines = []
+
+        with open(doc, encoding="utf-8") as file:
+            for _ in range(350): next(file)
+            for line in file:
+                if ".. code-block:: kv" not in line:
+                    continue
+                next(file)
+                lines += [next(file)[4:] for _ in range(9)]
+                break
+
+        self.assertEqual(parse("\n".join(lines)), tree)
 
     def test_programming_guide_widgets_floatlayout_canvas_button(self):
         from kvlang import parse
