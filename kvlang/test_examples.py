@@ -8,7 +8,7 @@ from unittest import TestCase, main, util
 from lark import Tree, Token
 
 util._MAX_LENGTH = 999999  # type: ignore
-
+KIVY = join(dirname(dirname(abspath(__file__))), "kivy")
 
 def load(name: str) -> str:
     folder = dirname(abspath(__file__))
@@ -39,7 +39,18 @@ class TestExamples(TestCase):
                 ])
             ])
         ])
-        self.assertEqual(parse(load("getting-started.kv")), tree)
+
+        doc = join(KIVY, "doc", "sources", "gettingstarted", "rules.rst")
+        lines = []
+
+        with open(doc, encoding="utf-8") as file:
+            for line in file:
+                if ".. code-block:: kv" not in line:
+                    continue
+                next(file)
+                lines += [next(file)[4:] for _ in range(6)]
+
+        self.assertEqual(parse("\n".join(lines)), tree)
 
     def test_getting_started_drawing(self):
         from kvlang import parse
