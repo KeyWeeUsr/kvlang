@@ -59,7 +59,8 @@ KWARGS: M[str, str | bool | object] | M[str, Collection[str]] = {
     },
     "include_package_data": True,
     "classifiers": [
-        "Intended Audience :: End Users/Desktop",
+        "Development Status :: 3 - Alpha",
+        "Intended Audience :: Developers",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3 :: Only"
     ],
