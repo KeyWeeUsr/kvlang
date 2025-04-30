@@ -22,5 +22,25 @@ pip install https://github.com/KeyWeeUsr/kvlang/zipball/master
 pip install https://github.com/KeyWeeUsr/kvlang/zipball/1.0.0
 ```
 
+then
+
+```python
+from kvlang import parse
+
+print(parse("#:kivy 2.3.1"))
+# Tree(Token('RULE', 'start'), [Tree(Token('RULE', 'special'), [...])])
+
+print(parse("#:kivy 2.3.1").pretty())
+# start
+#   special
+#     special_directive
+#       kivy_version
+#          
+#         version
+#           2
+#           3
+#           1
+```
+
 [kv]: https://kivy.org/doc/stable/guide/lang.html
 [wiki]: https://en.wikipedia.org/wiki/Kivy_(framework)#Kv_language
