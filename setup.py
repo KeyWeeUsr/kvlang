@@ -1,5 +1,30 @@
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages, Command
 from typing import Mapping as M, List, Union, Collection, Dict
+
+
+class Style(Command):
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        from sh import pycodestyle  # type: ignore
+        pycodestyle("--ignore=none", "--exclude=modules", ".")
+
+
+class Type(Command):
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        from sh import mypy  # type: ignore
+        mypy("--exclude", "modules", "--exclude", "build", ".")
+
 
 NAME = "kvlang"
 VERSION = "1.0.0"
@@ -18,12 +43,12 @@ KWARGS: M[str, str | bool | object] | M[str, Collection[str]] = {
     "extras_require": {
         "dev": [
             "pycodestyle", "pylint", "mypy",
-            "types-setuptools"
+            "types-setuptools", "sh"
         ],
         "kivy": [
             "kivy>=2.3.1"
         ],
-        "release": ["wheel", "twine"]
+        "release": ["wheel", "twine", "sh"]
     },
     "package_data": {
         "kvlang": ["*.lark"]
@@ -33,7 +58,10 @@ KWARGS: M[str, str | bool | object] | M[str, Collection[str]] = {
         "Intended Audience :: End Users/Desktop",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3 :: Only"
-    ]
+    ],
+    "cmdclass": {
+        "style": Style, "type": Type
+    }
 }
 
 
