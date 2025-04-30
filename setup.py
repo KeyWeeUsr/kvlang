@@ -1,3 +1,4 @@
+from pathlib import Path
 from setuptools import setup, find_packages, Command
 from typing import Mapping as M, List, Union, Collection, Dict
 
@@ -28,11 +29,14 @@ class Type(Command):
 
 NAME = "kvlang"
 VERSION = "1.0.0"
+ROOT = Path(__file__).parent
 KWARGS: M[str, str | bool | object] | M[str, Collection[str]] = {
     "name": NAME,
     "version": VERSION,
     "packages": find_packages(exclude=["*.tests"]),
     "license": "MIT",
+    "long_description": (ROOT / "README.md").read_text(),
+    "long_description_content_type": "text/markdown",
     "author": "Peter Badida",
     "author_email": "keyweeusr@gmail.com",
     "url": f"https://github.com/KeyWeeUsr/{NAME}",
