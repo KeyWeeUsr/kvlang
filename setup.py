@@ -31,7 +31,7 @@ VERSION = "1.0.0"
 KWARGS: M[str, str | bool | object] | M[str, Collection[str]] = {
     "name": NAME,
     "version": VERSION,
-    "packages": find_packages(),
+    "packages": find_packages(exclude=["*.tests"]),
     "license": "MIT",
     "author": "Peter Badida",
     "author_email": "keyweeusr@gmail.com",
