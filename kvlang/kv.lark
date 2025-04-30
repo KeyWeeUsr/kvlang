@@ -20,7 +20,7 @@ IMPORT_MODULE: ANY
 import: "import" IMPORT_NAME WHITESPACE IMPORT_MODULE
 
 SET_NAME: ANY
-SET_VALUE: ANY
+SET_VALUE: /.+/
 set: "set" SET_NAME WHITESPACE SET_VALUE
 
 widget_rule_tree: widget_rule _NL* (_INDENT (widget_tree | widget_property | canvas_tree)+ _DEDENT)?
