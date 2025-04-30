@@ -12,6 +12,8 @@ from kvlang.common import ROOT
 util._MAX_LENGTH = 999999  # type: ignore
 MODULES = Path(ROOT).parent / "modules"
 KIVY = MODULES / "kivy"
+KVEXT = MODULES / "kvext"
+
 
 def load(name: str) -> str:
     with open(Path(ROOT) / "examples" / name, encoding="utf-8") as file:
@@ -391,7 +393,8 @@ class TestExamples(TestCase):
         lines = []
 
         with open(doc, encoding="utf-8") as file:
-            for _ in range(280): next(file)
+            for _ in range(280):
+                next(file)
             for line in file:
                 if ".. code-block:: kv" not in line:
                     continue
@@ -459,7 +462,8 @@ class TestExamples(TestCase):
         lines = []
 
         with open(doc, encoding="utf-8") as file:
-            for _ in range(350): next(file)
+            for _ in range(350):
+                next(file)
             for line in file:
                 if ".. code-block:: kv" not in line:
                     continue
@@ -562,7 +566,8 @@ class TestExamples(TestCase):
         lines = []
 
         with open(doc, encoding="utf-8") as file:
-            for _ in range(414): next(file)
+            for _ in range(414):
+                next(file)
             for line in file:
                 lines += [next(file)[4:] for _ in range(12)]
                 break
@@ -739,7 +744,8 @@ class TestExamples(TestCase):
         lines = []
 
         with open(doc, encoding="utf-8") as file:
-            for _ in range(510): next(file)
+            for _ in range(510):
+                next(file)
             for line in file:
                 lines += [next(file)[4:] for _ in range(21)]
                 break
@@ -985,7 +991,8 @@ class TestExamples(TestCase):
         lines = []
 
         with open(doc, encoding="utf-8") as file:
-            for _ in range(576): next(file)
+            for _ in range(576):
+                next(file)
             for line in file:
                 lines += [next(file)[4:] for _ in range(28)]
                 break
@@ -1222,12 +1229,111 @@ class TestExamples(TestCase):
         lines = []
 
         with open(doc, encoding="utf-8") as file:
-            for _ in range(644): next(file)
+            for _ in range(644):
+                next(file)
             for line in file:
                 lines += [next(file)[4:] for _ in range(28)]
                 break
 
         self.assertEqual(parse("".join(lines)), tree)
+
+    def test_kvext_kvext(self):
+        from kvlang import parse
+        tree = Tree(Token("RULE", "start"), [
+            Tree(Token("RULE", "special"), [
+                Tree(Token("RULE", "special_directive"), [
+                    Tree(Token("RULE", "set"), [
+                        Token("SET_NAME", "__KV_EXT_V__"),
+                        Token("WHITESPACE", " "),
+                        Token("SET_VALUE", "(0, 0, 1)")
+                    ])
+                ])
+            ]),
+            Tree(Token("RULE", "special"), [
+                Tree(Token("RULE", "special_directive"), [
+                    Tree(Token("RULE", "set"), [
+                        Token("SET_NAME", "_eat"),
+                        Token("WHITESPACE", " "),
+                        Token("SET_VALUE", "lambda *a, **kw: None")
+                    ])
+                ])
+            ]),
+            Tree(Token("RULE", "special"), [
+                Tree(Token("RULE", "special_directive"), [
+                    Tree(Token("RULE", "set"), [
+                        Token("SET_NAME", "_for"),
+                        Token("WHITESPACE", " "),
+                        Token("SET_VALUE", (
+                            "lambda N, c, a=(), kw={}:"
+                            " _eat([c(*a, **kw) for i in range(N)])"
+                        ))
+                    ])
+                ])
+            ]),
+            Tree(Token("RULE", "special"), [
+                Tree(Token("RULE", "special_directive"), [
+                    Tree(Token("RULE", "set"), [
+                        Token("SET_NAME", "_forc"),
+                        Token("WHITESPACE", " "),
+                        Token("SET_VALUE", (
+                            "lambda N, c, a, kw={}:"
+                            " _eat([c(a(**kw), **kw) for i in range(N)])"
+                        ))
+                    ])
+                ])
+            ]),
+            Tree(Token("RULE", "special"), [
+                Tree(Token("RULE", "special_directive"), [
+                    Tree(Token("RULE", "set"), [
+                        Token("SET_NAME", "_forw"),
+                        Token("WHITESPACE", " "),
+                        Token("SET_VALUE", (
+                            "lambda p, N, wdg, kw={}:"
+                            " _eat([p.add_widget("
+                            "wdg(**kw)) for i in range(N)])"
+                        ))
+                    ])
+                ])
+            ]),
+            Tree(Token("RULE", "special"), [
+                Tree(Token("RULE", "special_directive"), [
+                    Tree(Token("RULE", "set"), [
+                        Token("SET_NAME", "_forws"),
+                        Token("WHITESPACE", " "),
+                        Token("SET_VALUE", (
+                            "lambda p, wdgs=[]:"
+                            " _eat([p.add_widget("
+                            "wdgs[i][0](**wdgs[i][1]))"
+                            " for i in range(len(wdgs))])"
+                        ))
+                    ])
+                ])
+            ]),
+            Tree(Token("RULE", "special"), [
+                Tree(Token("RULE", "special_directive"), [
+                    Tree(Token("RULE", "set"), [
+                        Token("SET_NAME", "_swapw"),
+                        Token("WHITESPACE", " "),
+                        Token("SET_VALUE", (
+                            "lambda a, b: _eat(["
+                            "setattr(a, '__swap_ib',"
+                            " b.parent.children.index(b)),"
+                            "setattr(a, '__swap_ia',"
+                            " a.parent.children.index(a)),"
+                            "b.parent.remove_widget(b),"
+                            " a.parent.add_widget(b, a.__swap_ia),"
+                            "a.parent.remove_widget(a),"
+                            " b.parent.add_widget(a, a.__swap_ib),"
+                            "delattr(a, '__swap_ia'),"
+                            " delattr(a, '__swap_ib'),])"
+                        ))
+                    ])
+                ])
+            ])
+        ])
+
+        with open(KVEXT / "kvext.kv") as file:
+            self.assertEqual(parse(file.read()), tree)
 
 
 if __name__ == "__main__":
