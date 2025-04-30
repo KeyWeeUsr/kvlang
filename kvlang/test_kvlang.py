@@ -171,7 +171,7 @@ class TestGrammar(TestCase):
                 ])
             ]))
 
-    def test_root_widget_tree(self):
+    def test_root_widget_rule_tree(self):
         from kvlang import parse
         for prefix, comment in (
                 ("", "text"), (" ", " text"), ("    ", "    text")

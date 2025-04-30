@@ -106,7 +106,7 @@ class TestLangQuirks(TestCase):
             "kivy.modules": MagicMock(),
         }
         with patch.dict(sys.modules, patched_modules):
-            from kivy._version import __version__ as kivy_version
+            from kivy._version import __version__ as kivy_version  # type: ignore
             version = tuple([int(num) for num in kivy_version.split(".")])
             for key, val in sys.modules.items():
                 if not key.startswith("kivy"):
