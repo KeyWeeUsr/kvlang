@@ -2,17 +2,19 @@
 Examples from Kivy documentation (MIT)
 """
 
-from os.path import dirname, join, abspath
+from pathlib import Path
 from unittest import TestCase, main, util
 
 from lark import Tree, Token
 
+from kvlang.common import ROOT
+
 util._MAX_LENGTH = 999999  # type: ignore
-KIVY = join(dirname(dirname(abspath(__file__))), "kivy")
+MODULES = Path(ROOT).parent / "modules"
+KIVY = MODULES / "kivy"
 
 def load(name: str) -> str:
-    folder = dirname(abspath(__file__))
-    with open(join(folder, "examples", name), encoding="utf-8") as file:
+    with open(Path(ROOT) / "examples" / name, encoding="utf-8") as file:
         return file.read()
 
 
@@ -40,7 +42,7 @@ class TestExamples(TestCase):
             ])
         ])
 
-        doc = join(KIVY, "doc", "sources", "gettingstarted", "rules.rst")
+        doc = KIVY / "doc" / "sources" / "gettingstarted" / "rules.rst"
         lines = []
 
         with open(doc, encoding="utf-8") as file:
@@ -139,7 +141,7 @@ class TestExamples(TestCase):
             ])
         ])
 
-        doc = join(KIVY, "doc", "sources", "guide", "widgets.rst")
+        doc = KIVY / "doc" / "sources" / "guide" / "widgets.rst"
         lines = []
 
         with open(doc, encoding="utf-8") as file:
@@ -385,7 +387,7 @@ class TestExamples(TestCase):
             ])
         ])
 
-        doc = join(KIVY, "doc", "sources", "guide", "widgets.rst")
+        doc = KIVY / "doc" / "sources" / "guide" / "widgets.rst"
         lines = []
 
         with open(doc, encoding="utf-8") as file:
@@ -453,7 +455,7 @@ class TestExamples(TestCase):
             ])
         ])
 
-        doc = join(KIVY, "doc", "sources", "guide", "widgets.rst")
+        doc = KIVY / "doc" / "sources" / "guide" / "widgets.rst"
         lines = []
 
         with open(doc, encoding="utf-8") as file:
@@ -556,7 +558,7 @@ class TestExamples(TestCase):
             ])
         ])
 
-        doc = join(KIVY, "doc", "sources", "guide", "widgets.rst")
+        doc = KIVY / "doc" / "sources" / "guide" / "widgets.rst"
         lines = []
 
         with open(doc, encoding="utf-8") as file:
@@ -733,7 +735,7 @@ class TestExamples(TestCase):
             ])
         ])
 
-        doc = join(KIVY, "doc", "sources", "guide", "widgets.rst")
+        doc = KIVY / "doc" / "sources" / "guide" / "widgets.rst"
         lines = []
 
         with open(doc, encoding="utf-8") as file:
@@ -979,7 +981,7 @@ class TestExamples(TestCase):
             ])
         ])
 
-        doc = join(KIVY, "doc", "sources", "guide", "widgets.rst")
+        doc = KIVY / "doc" / "sources" / "guide" / "widgets.rst"
         lines = []
 
         with open(doc, encoding="utf-8") as file:
@@ -1216,7 +1218,7 @@ class TestExamples(TestCase):
             ])
         ])
 
-        doc = join(KIVY, "doc", "sources", "guide", "widgets.rst")
+        doc = KIVY / "doc" / "sources" / "guide" / "widgets.rst"
         lines = []
 
         with open(doc, encoding="utf-8") as file:

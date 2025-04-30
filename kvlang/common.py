@@ -1,3 +1,3 @@
-from os.path import dirname, abspath, join
+from pathlib import Path
 
-ROOT: str = dirname(abspath(__file__))
+ROOT: Path = Path(__file__).parent.absolute()
