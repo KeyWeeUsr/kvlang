@@ -28,8 +28,13 @@ INCLUDE_NAME: ANY
 include: "include" INCLUDE_NAME
 
 widget_rule_tree: widget_rule _NL* (_INDENT (widget_tree | widget_property | canvas_tree)+ _DEDENT)?
-widget_rule: "<" WIDGET_RULE ">" ":"?
-WIDGET_RULE: /[A-Za-z0-9]+/
+
+CLASS_NAME: /[A-Za-z_][A-Za-z0-9_]*/
+base_classes: CLASS_NAME ("+" CLASS_NAME)*
+WIDGET_NAME: /[A-Za-z_][A-Za-z0-9_]*/
+widget_rule_name: WIDGET_NAME ("@" base_classes)?
+widget_rule: "<" widget_rule_name ">" ":"?
+
 widget_tree: widget _NL* (_INDENT (widget_tree | widget_property | canvas_tree)+ _DEDENT)?
 widget: WIDGET ":"?
 widget_property: PROPERTY_NAME ":" property_value

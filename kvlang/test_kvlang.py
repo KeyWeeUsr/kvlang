@@ -141,7 +141,9 @@ class TestGrammar(TestCase):
         self.assertEqual(parse(text), Tree(Token("RULE", "start"), [
             Tree(Token("RULE", "widget_rule_tree"), [
                 Tree(Token("RULE", "widget_rule"), [
-                    Token("WIDGET_RULE", "MyWidget")
+                    Tree(Token("RULE", "widget_rule_name"), [
+                        Token("WIDGET_NAME", "MyWidget")
+                    ])
                 ])
             ])
         ]))
@@ -152,7 +154,9 @@ class TestGrammar(TestCase):
         self.assertEqual(parse(text), Tree(Token("RULE", "start"), [
             Tree(Token("RULE", "widget_rule_tree"), [
                 Tree(Token("RULE", "widget_rule"), [
-                    Token("WIDGET_RULE", "MyWidget")
+                    Tree(Token("RULE", "widget_rule_name"), [
+                        Token("WIDGET_NAME", "MyWidget")
+                    ])
                 ])
             ])
         ]))
@@ -166,7 +170,9 @@ class TestGrammar(TestCase):
             self.assertEqual(parse(text), Tree(Token("RULE", "start"), [
                 Tree(Token("RULE", "widget_rule_tree"), [
                     Tree(Token("RULE", "widget_rule"), [
-                        Token("WIDGET_RULE", "MyWidget")
+                        Tree(Token("RULE", "widget_rule_name"), [
+                            Token("WIDGET_NAME", "MyWidget")
+                        ])
                     ])
                 ])
             ]))
@@ -180,7 +186,9 @@ class TestGrammar(TestCase):
             self.assertEqual(parse(text), Tree(Token("RULE", "start"), [
                 Tree(Token("RULE", "widget_rule_tree"), [
                     Tree(Token("RULE", "widget_rule"), [
-                        Token("WIDGET_RULE", "MyWidget")
+                        Tree(Token("RULE", "widget_rule_name"), [
+                            Token("WIDGET_NAME", "MyWidget")
+                        ])
                     ]),
                     Tree(Token("RULE", "widget_tree"), [
                         Tree(Token("RULE", "widget"), [

@@ -26,7 +26,9 @@ class TestExamples(TestCase):
         tree = Tree(Token("RULE", "start"), [
             Tree(Token("RULE", "widget_rule_tree"), [
                 Tree(Token("RULE", "widget_rule"), [
-                    Token("WIDGET_RULE", "LoginScreen")
+                    Tree(Token("RULE", "widget_rule_name"), [
+                        Token("WIDGET_NAME", "LoginScreen")
+                    ])
                 ]),
                 Tree(Token("RULE", "widget_tree"), [
                     Tree(Token("RULE", "widget"), [
@@ -62,7 +64,9 @@ class TestExamples(TestCase):
         tree = Tree(Token("RULE", "start"), [
             Tree(Token("RULE", "widget_rule_tree"), [
                 Tree(Token("RULE", "widget_rule"), [
-                    Token("WIDGET_RULE", "MyWidget")
+                    Tree(Token("RULE", "widget_rule_name"), [
+                        Token("WIDGET_NAME", "MyWidget")
+                    ])
                 ]),
                 Tree(Token("RULE", "canvas_tree"), [
                     Tree(Token("RULE", "canvas"), [
@@ -579,7 +583,9 @@ class TestExamples(TestCase):
         tree = Tree(Token("RULE", "start"), [
             Tree(Token("RULE", "widget_rule_tree"), [
                 Tree(Token("RULE", "widget_rule"), [
-                    Token("WIDGET_RULE", "CustomLayout")
+                    Tree(Token("RULE", "widget_rule_name"), [
+                        Token("WIDGET_NAME", "CustomLayout")
+                    ])
                 ]),
                 Tree(Token("RULE", "canvas_tree"), [
                     Tree(Token("RULE", "canvas"), [
@@ -628,7 +634,9 @@ class TestExamples(TestCase):
             ]),
             Tree(Token("RULE", "widget_rule_tree"), [
                 Tree(Token("RULE", "widget_rule"), [
-                    Token("WIDGET_RULE", "RootWidget")
+                    Tree(Token("RULE", "widget_rule_name"), [
+                        Token("WIDGET_NAME", "RootWidget")
+                    ])
                 ]),
                 Tree(Token("RULE", "widget_tree"), [
                     Tree(Token("RULE", "widget"), [
@@ -757,7 +765,9 @@ class TestExamples(TestCase):
         tree = Tree(Token("RULE", "start"), [
             Tree(Token("RULE", "widget_rule_tree"), [
                 Tree(Token("RULE", "widget_rule"), [
-                    Token("WIDGET_RULE", "GridLayout")
+                    Tree(Token("RULE", "widget_rule_name"), [
+                        Token("WIDGET_NAME", "GridLayout")
+                    ])
                 ]),
                 Tree(Token("RULE", "canvas_tree"), [
                     Tree(Token("RULE", "canvas"), [
@@ -817,7 +827,9 @@ class TestExamples(TestCase):
             ]),
             Tree(Token("RULE", "widget_rule_tree"), [
                 Tree(Token("RULE", "widget_rule"), [
-                    Token("WIDGET_RULE", "RootWidget")
+                    Tree(Token("RULE", "widget_rule_name"), [
+                        Token("WIDGET_NAME", "RootWidget")
+                    ])
                 ]),
                 Tree(Token("RULE", "widget_tree"), [
                     Tree(Token("RULE", "widget"), [
@@ -1004,7 +1016,9 @@ class TestExamples(TestCase):
         tree = Tree(Token("RULE", "start"), [
             Tree(Token("RULE", "widget_rule_tree"), [
                 Tree(Token("RULE", "widget_rule"), [
-                    Token("WIDGET_RULE", "CustomLayout")
+                    Tree(Token("RULE", "widget_rule_name"), [
+                        Token("WIDGET_NAME", "CustomLayout")
+                    ])
                 ]),
                 Tree(Token("RULE", "canvas_tree"), [
                     Tree(Token("RULE", "canvas"), [
@@ -1060,7 +1074,9 @@ class TestExamples(TestCase):
             ]),
             Tree(Token("RULE", "widget_rule_tree"), [
                 Tree(Token("RULE", "widget_rule"), [
-                    Token("WIDGET_RULE", "RootWidget")
+                    Tree(Token("RULE", "widget_rule_name"), [
+                        Token("WIDGET_NAME", "RootWidget")
+                    ])
                 ]),
                 Tree(Token("RULE", "widget_tree"), [
                     Tree(Token("RULE", "widget"), [
@@ -1809,6 +1825,45 @@ class TestExamples(TestCase):
                         ])
                     ])
                 ])
+            ]),
+            Tree(Token("RULE", "widget_rule_tree"), [
+                Tree(Token("RULE", "widget_rule"), [
+                    Tree(Token("RULE", "widget_rule_name"), [
+                        Token("WIDGET_NAME", "ForWidget"),
+                        Tree(Token("RULE", "base_classes"), [
+                            Token("CLASS_NAME", "ButtonBehavior"),
+                            Token("CLASS_NAME", "Label")
+                        ])
+                    ])
+                ]),
+                Tree(Token("RULE", "widget_property"), [
+                    Token("PROPERTY_NAME", "on_parent"),
+                    Tree(Token("RULE", "property_value"), [
+                        Tree(Token("RULE", "property_value_inline"), [
+                            Token("PROPERTY_VALUE_INLINE", " self.dummy += 1")
+                        ])
+                    ])
+                ]),
+                Tree(Token("RULE", "widget_property"), [
+                    Token("PROPERTY_NAME", "dummy"),
+                    Tree(Token("RULE", "property_value"), [
+                        Tree(Token("RULE", "property_value_inline"), [
+                            Token("PROPERTY_VALUE_INLINE", " 0")
+                        ])
+                    ])
+                ]),
+                Tree(Token("RULE", "widget_property"), [
+                    Token("PROPERTY_NAME", "on_dummy"),
+                    Tree(Token("RULE", "property_value"), [
+                        Tree(Token("RULE", "property_value_inline"), [
+                            Token(
+                                "PROPERTY_VALUE_INLINE",
+                                " if self.dummy <= 2:"
+                                " _forw(self.parent, 6, Factory.Button)"
+                            )
+                        ])
+                    ])
+                ])
             ])
         ])
 
@@ -1818,7 +1873,7 @@ class TestExamples(TestCase):
         with open(doc, encoding="utf-8") as file:
             for _ in range(3):
                 next(file)
-            lines += [next(file) for _ in range(61 - 4)]
+            lines += [next(file) for _ in range(61)]
 
         self.assertEqual(parse("".join(lines)), tree)
 
