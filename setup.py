@@ -27,6 +27,19 @@ class Type(Command):
         mypy("--exclude", "modules", "--exclude", "build", ".")
 
 
+class Docs(Command):
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        from sh import sphinx_apidoc, make  # type: ignore
+        sphinx_apidoc("-o", "docs", "kvlang", "kvlang/tests")
+        make("-C", "docs", "clean", "html")
+
+
 NAME = "kvlang"
 VERSION = "1.0.0"
 ROOT = Path(__file__).parent
@@ -47,7 +60,7 @@ KWARGS: M[str, str | bool | object] | M[str, Collection[str]] = {
     "extras_require": {
         "dev": [
             "pycodestyle", "pylint", "mypy",
-            "types-setuptools", "sh"
+            "types-setuptools", "sh", "sphinx"
         ],
         "kivy": [
             "kivy>=2.3.1"
@@ -65,7 +78,7 @@ KWARGS: M[str, str | bool | object] | M[str, Collection[str]] = {
         "Programming Language :: Python :: 3 :: Only"
     ],
     "cmdclass": {
-        "style": Style, "type": Type
+        "style": Style, "type": Type, "docs": Docs
     }
 }
 
