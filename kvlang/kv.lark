@@ -37,9 +37,9 @@ widget_property: PROPERTY_NAME ":" property_value
 property_value: property_value_inline | property_value_block
 property_value_inline: " "? PROPERTY_VALUE_INLINE " "? _NL
 PROPERTY_VALUE_INLINE: /[^#\n]+/
-PROPERTY_VALUE_BLOCK_LINE: /[^\s#\n]+/
-property_value_block_line: PROPERTY_VALUE_BLOCK_LINE
-property_value_block: _NL _INDENT property_value_block_line* _NL _DEDENT
+PROPERTY_VALUE_BLOCK_LINE: /[^#\n]+/
+property_value_block_line: PROPERTY_VALUE_BLOCK_LINE " "? _NL
+property_value_block: _NL _INDENT property_value_block_line+ _DEDENT
 
 canvas: CANVAS
     | CANVAS "." (CANVAS_BEFORE | CANVAS_AFTER)
