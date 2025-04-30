@@ -1335,6 +1335,493 @@ class TestExamples(TestCase):
         with open(KVEXT / "kvext.kv") as file:
             self.assertEqual(parse(file.read()), tree)
 
+    def test_kvext_example(self):
+        from kvlang import parse
+        tree = Tree(Token("RULE", "start"), [
+            Tree(Token("RULE", "special"), [
+                Tree(Token("RULE", "special_directive"), [
+                    Tree(Token("RULE", "include"), [
+                        Token("INCLUDE_NAME", "kvext.kv")
+                    ])
+                ])
+            ]),
+            Tree(Token("RULE", "special"), [
+                Tree(Token("RULE", "special_directive"), [
+                    Tree(Token("RULE", "import"), [
+                        Token("IMPORT_NAME", "Factory"),
+                        Token("WHITESPACE", " "),
+                        Token("IMPORT_MODULE", "kivy.factory.Factory")
+                    ])
+                ])
+            ]),
+            Tree(Token("RULE", "special"), [
+                Tree(Token("RULE", "special_directive"), [
+                    Tree(Token("RULE", "import"), [
+                        Token("IMPORT_NAME", "r"),
+                        Token("WHITESPACE", " "),
+                        Token("IMPORT_MODULE", "random.random")
+                    ])
+                ])
+            ]),
+            Tree(Token("RULE", "widget_tree"), [
+                Tree(Token("RULE", "widget"), [
+                    Token("WIDGET", "BoxLayout")
+                ]),
+                Tree(Token("RULE", "widget_property"), [
+                    Token("PROPERTY_NAME", "orientation"),
+                    Tree(Token("RULE", "property_value"), [
+                        Tree(Token("RULE", "property_value_inline"), [
+                            Token("PROPERTY_VALUE_INLINE", " 'vertical'")
+                        ])
+                    ])
+                ]),
+                Tree(Token("RULE", "widget_tree"), [
+                    Tree(Token("RULE", "widget"), [
+                        Token("WIDGET", "BoxLayout")
+                    ]),
+                    Tree(Token("RULE", "widget_tree"), [
+                        Tree(Token("RULE", "widget"), [
+                            Token("WIDGET", "BoxLayout")
+                        ]),
+                        Tree(Token("RULE", "widget_property"), [
+                            Token("PROPERTY_NAME", "orientation"),
+                            Tree(Token("RULE", "property_value"), [
+                                Tree(Token("RULE", "property_value_inline"), [
+                                    Token(
+                                        "PROPERTY_VALUE_INLINE", " 'vertical'"
+                                    )
+                                ])
+                            ])
+                        ]),
+                        Tree(Token("RULE", "widget_tree"), [
+                            Tree(Token("RULE", "widget"), [
+                                Token("WIDGET", "Button")
+                            ]),
+                            Tree(Token("RULE", "widget_property"), [
+                                Token("PROPERTY_NAME", "text"),
+                                Tree(Token("RULE", "property_value"), [
+                                    Tree(Token(
+                                        "RULE", "property_value_inline"
+                                    ), [
+                                        Token(
+                                            "PROPERTY_VALUE_INLINE", " '_for'"
+                                        )
+                                    ])
+                                ])
+                            ]),
+                            Tree(Token("RULE", "widget_property"), [
+                                Token("PROPERTY_NAME", "on_release"),
+                                Tree(Token("RULE", "property_value"), [
+                                    Tree(Token(
+                                        "RULE", "property_value_inline"
+                                    ), [
+                                        Token(
+                                            "PROPERTY_VALUE_INLINE",
+                                            " _for(5, print, (str(r()), ))"
+                                        )
+                                    ])
+                                ])
+                            ])
+                        ]),
+                        Tree(Token("RULE", "widget_tree"), [
+                            Tree(Token("RULE", "widget"), [
+                                Token("WIDGET", "Button")
+                            ]),
+                            Tree(Token("RULE", "widget_property"), [
+                                Token("PROPERTY_NAME", "text"),
+                                Tree(Token("RULE", "property_value"), [
+                                    Tree(Token(
+                                        "RULE", "property_value_inline"
+                                    ), [
+                                        Token(
+                                            "PROPERTY_VALUE_INLINE", " '_forc'"
+                                        )
+                                    ])
+                                ])
+                            ]),
+                            Tree(Token("RULE", "widget_property"), [
+                                Token("PROPERTY_NAME", "on_release"),
+                                Tree(Token("RULE", "property_value"), [
+                                    Tree(Token(
+                                        "RULE", "property_value_inline"
+                                    ), [
+                                        Token(
+                                            "PROPERTY_VALUE_INLINE",
+                                            " _forc(5, print, r)"
+                                        )
+                                    ])
+                                ])
+                            ])
+                        ])
+                    ]),
+                    Tree(Token("RULE", "widget_tree"), [
+                        Tree(Token("RULE", "widget"), [
+                            Token("WIDGET", "BoxLayout")
+                        ]),
+                        Tree(Token("RULE", "widget_property"), [
+                            Token("PROPERTY_NAME", "orientation"),
+                            Tree(Token("RULE", "property_value"), [
+                                Tree(Token("RULE", "property_value_inline"), [
+                                    Token(
+                                        "PROPERTY_VALUE_INLINE", " 'vertical'"
+                                    )
+                                ])
+                            ])
+                        ]),
+                        Tree(Token("RULE", "widget_tree"), [
+                            Tree(Token("RULE", "widget"), [
+                                Token("WIDGET", "Button")
+                            ]),
+                            Tree(Token("RULE", "widget_property"), [
+                                Token("PROPERTY_NAME", "text"),
+                                Tree(Token("RULE", "property_value"), [
+                                    Tree(Token(
+                                        "RULE", "property_value_inline"
+                                    ), [
+                                        Token(
+                                            "PROPERTY_VALUE_INLINE", " '_forw'"
+                                        )
+                                    ])
+                                ])
+                            ]),
+                            Tree(Token("RULE", "widget_property"), [
+                                Token("PROPERTY_NAME", "on_release"),
+                                Tree(Token("RULE", "property_value"), [
+                                    Tree(Token(
+                                        "RULE", "property_value_block"
+                                    ), [
+                                        Tree(Token(
+                                            "RULE", "property_value_block_line"
+                                        ), [
+                                            Token(
+                                                "PROPERTY_VALUE_BLOCK_LINE",
+                                                (
+                                                    "_forw(grid, 5,"
+                                                    " Factory.ForWidget,"
+                                                    " {'text': 'Hello!'})"
+                                                )
+                                            )
+                                        ])
+                                    ])
+                                ])
+                            ])
+                        ]),
+                        Tree(Token("RULE", "widget_tree"), [
+                            Tree(Token("RULE", "widget"), [
+                                Token("WIDGET", "Button")
+                            ]),
+                            Tree(Token("RULE", "widget_property"), [
+                                Token("PROPERTY_NAME", "text"),
+                                Tree(Token("RULE", "property_value"), [
+                                    Tree(Token(
+                                        "RULE", "property_value_inline"
+                                    ), [
+                                        Token(
+                                            "PROPERTY_VALUE_INLINE",
+                                            " '_forws'"
+                                        )
+                                    ])
+                                ])
+                            ]),
+                            Tree(Token("RULE", "widget_property"), [
+                                Token("PROPERTY_NAME", "on_release"),
+                                Tree(Token("RULE", "property_value"), [
+                                    Tree(Token(
+                                        "RULE", "property_value_block"
+                                    ), [
+                                        Tree(Token(
+                                            "RULE", "property_value_block_line"
+                                        ), [
+                                            Token(
+                                                "PROPERTY_VALUE_BLOCK_LINE",
+                                                "_forws(grid, ["
+                                            )
+                                        ]),
+                                        Tree(Token(
+                                            "RULE", "property_value_block_line"
+                                        ), [
+                                            Token(
+                                                "PROPERTY_VALUE_BLOCK_LINE",
+                                                (
+                                                    "[Factory.Spinner, {}],"
+                                                    " [Factory.Button,"
+                                                    " {'text':'blob'}],"
+                                                )
+                                            )
+                                        ]),
+                                        Tree(Token(
+                                            "RULE", "property_value_block_line"
+                                        ), [
+                                            Token(
+                                                "PROPERTY_VALUE_BLOCK_LINE",
+                                                "[Factory.Label,"
+                                                " {'color': (1, 0, 0, 1),"
+                                                " 'text':'blob'}]])"
+                                            )
+                                        ])
+                                    ])
+                                ])
+                            ])
+                        ]),
+                        Tree(Token("RULE", "widget_tree"), [
+                            Tree(Token("RULE", "widget"), [
+                                Token("WIDGET", "Button")
+                            ]),
+                            Tree(Token("RULE", "widget_property"), [
+                                Token("PROPERTY_NAME", "text"),
+                                Tree(Token("RULE", "property_value"), [
+                                    Tree(Token(
+                                        "RULE", "property_value_inline"
+                                    ), [
+                                        Token(
+                                            "PROPERTY_VALUE_INLINE",
+                                            " 'clear grid'"
+                                        )
+                                    ])
+                                ])
+                            ]),
+                            Tree(Token("RULE", "widget_property"), [
+                                Token("PROPERTY_NAME", "on_release"),
+                                Tree(Token("RULE", "property_value"), [
+                                    Tree(Token(
+                                        "RULE", "property_value_inline"
+                                    ), [
+                                        Token(
+                                            "PROPERTY_VALUE_INLINE",
+                                            " grid.clear_widgets()"
+                                        )
+                                    ])
+                                ])
+                            ])
+                        ])
+                    ]),
+                    Tree(Token("RULE", "widget_tree"), [
+                        Tree(Token("RULE", "widget"), [
+                            Token("WIDGET", "BoxLayout")
+                        ]),
+                        Tree(Token("RULE", "widget_property"), [
+                            Token("PROPERTY_NAME", "orientation"),
+                            Tree(Token("RULE", "property_value"), [
+                                Tree(Token("RULE", "property_value_inline"), [
+                                    Token(
+                                        "PROPERTY_VALUE_INLINE", " 'vertical'"
+                                    )
+                                ])
+                            ])
+                        ]),
+                        Tree(Token("RULE", "widget_tree"), [
+                            Tree(Token("RULE", "widget"), [
+                                Token("WIDGET", "Button")
+                            ]),
+                            Tree(Token("RULE", "widget_property"), [
+                                Token("PROPERTY_NAME", "id"),
+                                Tree(Token("RULE", "property_value"), [
+                                    Tree(Token(
+                                        "RULE", "property_value_inline"
+                                    ), [
+                                        Token("PROPERTY_VALUE_INLINE", " id_a")
+                                    ])
+                                ])
+                            ]),
+                            Tree(Token("RULE", "widget_property"), [
+                                Token("PROPERTY_NAME", "text"),
+                                Tree(Token("RULE", "property_value"), [
+                                    Tree(Token(
+                                        "RULE", "property_value_inline"
+                                    ), [
+                                        Token("PROPERTY_VALUE_INLINE", " 'a'")
+                                    ])
+                                ])
+                            ])
+                        ]),
+                        Tree(Token("RULE", "widget_tree"), [
+                            Tree(Token("RULE", "widget"), [
+                                Token("WIDGET", "Button")
+                            ]),
+                            Tree(Token("RULE", "widget_property"), [
+                                Token("PROPERTY_NAME", "id"),
+                                Tree(Token("RULE", "property_value"), [
+                                    Tree(Token(
+                                        "RULE", "property_value_inline"
+                                    ), [
+                                        Token("PROPERTY_VALUE_INLINE", " id_b")
+                                    ])
+                                ])
+                            ]),
+                            Tree(Token("RULE", "widget_property"), [
+                                Token("PROPERTY_NAME", "text"),
+                                Tree(Token("RULE", "property_value"), [
+                                    Tree(Token(
+                                        "RULE", "property_value_inline"
+                                    ), [
+                                        Token("PROPERTY_VALUE_INLINE", " 'b'")
+                                    ])
+                                ])
+                            ])
+                        ]),
+                        Tree(Token("RULE", "widget_tree"), [
+                            Tree(Token("RULE", "widget"), [
+                                Token("WIDGET", "Button")
+                            ]),
+                            Tree(Token("RULE", "widget_property"), [
+                                Token("PROPERTY_NAME", "id"),
+                                Tree(Token("RULE", "property_value"), [
+                                    Tree(Token(
+                                        "RULE", "property_value_inline"
+                                    ), [
+                                        Token("PROPERTY_VALUE_INLINE", " id_c")
+                                    ])
+                                ])
+                            ]),
+                            Tree(Token("RULE", "widget_property"), [
+                                Token("PROPERTY_NAME", "text"),
+                                Tree(Token("RULE", "property_value"), [
+                                    Tree(Token(
+                                        "RULE", "property_value_inline"
+                                    ), [
+                                        Token("PROPERTY_VALUE_INLINE", " 'c'")
+                                    ])
+                                ])
+                            ])
+                        ]),
+                        Tree(Token("RULE", "widget_tree"), [
+                            Tree(Token("RULE", "widget"), [
+                                Token("WIDGET", "Button")
+                            ]),
+                            Tree(Token("RULE", "widget_property"), [
+                                Token("PROPERTY_NAME", "id"),
+                                Tree(Token("RULE", "property_value"), [
+                                    Tree(Token(
+                                        "RULE", "property_value_inline"
+                                    ), [
+                                        Token("PROPERTY_VALUE_INLINE", " id_d")
+                                    ])
+                                ])
+                            ]),
+                            Tree(Token("RULE", "widget_property"), [
+                                Token("PROPERTY_NAME", "text"),
+                                Tree(Token("RULE", "property_value"), [
+                                    Tree(Token(
+                                        "RULE", "property_value_inline"
+                                    ), [
+                                        Token("PROPERTY_VALUE_INLINE", " 'd'")
+                                    ])
+                                ])
+                            ])
+                        ]),
+                    ]),
+                    Tree(Token("RULE", "widget_tree"), [
+                        Tree(Token("RULE", "widget"), [
+                            Token("WIDGET", "BoxLayout")
+                        ]),
+                        Tree(Token("RULE", "widget_property"), [
+                            Token("PROPERTY_NAME", "orientation"),
+                            Tree(Token("RULE", "property_value"), [
+                                Tree(Token("RULE", "property_value_inline"), [
+                                    Token(
+                                        "PROPERTY_VALUE_INLINE", " 'vertical'"
+                                    )
+                                ])
+                            ])
+                        ]),
+                        Tree(Token("RULE", "widget_tree"), [
+                            Tree(Token("RULE", "widget"), [
+                                Token("WIDGET", "Button")
+                            ]),
+                            Tree(Token("RULE", "widget_property"), [
+                                Token("PROPERTY_NAME", "text"),
+                                Tree(Token("RULE", "property_value"), [
+                                    Tree(Token(
+                                        "RULE", "property_value_inline"
+                                    ), [
+                                        Token(
+                                            "PROPERTY_VALUE_INLINE",
+                                            " 'swap a<->d'"
+                                        )
+                                    ])
+                                ])
+                            ]),
+                            Tree(Token("RULE", "widget_property"), [
+                                Token("PROPERTY_NAME", "on_release"),
+                                Tree(Token("RULE", "property_value"), [
+                                    Tree(Token(
+                                        "RULE", "property_value_inline"
+                                    ), [
+                                        Token(
+                                            "PROPERTY_VALUE_INLINE",
+                                            " _swapw(id_a, id_d)"
+                                        )
+                                    ])
+                                ])
+                            ])
+                        ]),
+                        Tree(Token("RULE", "widget_tree"), [
+                            Tree(Token("RULE", "widget"), [
+                                Token("WIDGET", "Button")
+                            ]),
+                            Tree(Token("RULE", "widget_property"), [
+                                Token("PROPERTY_NAME", "text"),
+                                Tree(Token("RULE", "property_value"), [
+                                    Tree(Token(
+                                        "RULE", "property_value_inline"
+                                    ), [
+                                        Token(
+                                            "PROPERTY_VALUE_INLINE",
+                                            " 'swap b<->c'"
+                                        )
+                                    ])
+                                ])
+                            ]),
+                            Tree(Token("RULE", "widget_property"), [
+                                Token("PROPERTY_NAME", "on_release"),
+                                Tree(Token("RULE", "property_value"), [
+                                    Tree(Token(
+                                        "RULE", "property_value_inline"
+                                    ), [
+                                        Token(
+                                            "PROPERTY_VALUE_INLINE",
+                                            " _swapw(id_b, id_c)"
+                                        )
+                                    ])
+                                ])
+                            ])
+                        ]),
+                    ])
+                ]),
+                Tree(Token("RULE", "widget_tree"), [
+                    Tree(Token("RULE", "widget"), [
+                        Token("WIDGET", "GridLayout")
+                    ]),
+                    Tree(Token("RULE", "widget_property"), [
+                        Token("PROPERTY_NAME", "id"),
+                        Tree(Token("RULE", "property_value"), [
+                            Tree(Token("RULE", "property_value_inline"), [
+                                Token("PROPERTY_VALUE_INLINE", " grid")
+                            ])
+                        ])
+                    ]),
+                    Tree(Token("RULE", "widget_property"), [
+                        Token("PROPERTY_NAME", "cols"),
+                        Tree(Token("RULE", "property_value"), [
+                            Tree(Token("RULE", "property_value_inline"), [
+                                Token("PROPERTY_VALUE_INLINE", " 20")
+                            ])
+                        ])
+                    ])
+                ])
+            ])
+        ])
+
+        doc = KVEXT / "example.py"
+        lines = []
+
+        with open(doc, encoding="utf-8") as file:
+            for _ in range(3):
+                next(file)
+            lines += [next(file) for _ in range(61 - 4)]
+
+        self.assertEqual(parse("".join(lines)), tree)
+
 
 if __name__ == "__main__":
     main()
