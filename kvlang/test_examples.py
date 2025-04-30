@@ -978,7 +978,17 @@ class TestExamples(TestCase):
                 ])
             ])
         ])
-        self.assertEqual(parse(load("pg-widgets-gridlayout.kv")), tree)
+
+        doc = join(KIVY, "doc", "sources", "guide", "widgets.rst")
+        lines = []
+
+        with open(doc, encoding="utf-8") as file:
+            for _ in range(576): next(file)
+            for line in file:
+                lines += [next(file)[4:] for _ in range(28)]
+                break
+
+        self.assertEqual(parse("".join(lines)), tree)
 
     def test_programming_guide_widgets_custom_border(self):
         from kvlang import parse
