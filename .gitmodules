@@ -1,3 +1,6 @@
 [submodule "kivy"]
 	path = modules/kivy
 	url = https://github.com/kivy/kivy
+[submodule "modules/kvext"]
+	path = modules/kvext
+	url = https://github.com/KeyWeeUsr/kvext
