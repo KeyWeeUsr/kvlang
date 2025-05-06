@@ -43,7 +43,7 @@ pip install git+https://github.com/KeyWeeUsr/kvlang.git
 # or
 pip install https://github.com/KeyWeeUsr/kvlang/zipball/master
 # or
-pip install https://github.com/KeyWeeUsr/kvlang/zipball/1.0.0
+pip install https://github.com/KeyWeeUsr/kvlang/zipball/1.0.1
 ```
 
 then
@@ -59,7 +59,6 @@ print(parse("#:kivy 2.3.1").pretty())
 #   special
 #     special_directive
 #       kivy_version
-#          
 #         version
 #           2
 #           3

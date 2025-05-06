@@ -38,7 +38,7 @@ class TestExamples(TestCase):
                         Token("PROPERTY_NAME", "rows"),
                         Tree(Token("RULE", "property_value"), [
                             Tree(Token("RULE", "property_value_inline"), [
-                                Token("PROPERTY_VALUE_INLINE", " 2 ")
+                                Token("PROPERTY_VALUE_INLINE", "2 ")
                             ])
                         ])
                     ])
@@ -82,7 +82,7 @@ class TestExamples(TestCase):
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
-                                        " .5, .5, .5, .5"
+                                        ".5, .5, .5, .5"
                                     )
                                 ])
                             ])
@@ -97,7 +97,7 @@ class TestExamples(TestCase):
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
-                                        "PROPERTY_VALUE_INLINE", " self.size"
+                                        "PROPERTY_VALUE_INLINE", "self.size"
                                     )
                                 ])
                             ])
@@ -106,7 +106,7 @@ class TestExamples(TestCase):
                             Token("PROPERTY_NAME", "pos"),
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
-                                    Token("PROPERTY_VALUE_INLINE", " self.pos")
+                                    Token("PROPERTY_VALUE_INLINE", "self.pos")
                                 ])
                             ])
                         ])
@@ -131,7 +131,7 @@ class TestExamples(TestCase):
                         Token("PROPERTY_NAME", "text"),
                         Tree(Token("RULE", "property_value"), [
                             Tree(Token("RULE", "property_value_inline"), [
-                                Token("PROPERTY_VALUE_INLINE", " 'Button 1'")
+                                Token("PROPERTY_VALUE_INLINE", "'Button 1'")
                             ])
                         ])
                     ]),
@@ -139,7 +139,7 @@ class TestExamples(TestCase):
                         Token("PROPERTY_NAME", "size_hint"),
                         Tree(Token("RULE", "property_value"), [
                             Tree(Token("RULE", "property_value_inline"), [
-                                Token("PROPERTY_VALUE_INLINE", " 1, 1")
+                                Token("PROPERTY_VALUE_INLINE", "1, 1")
                             ])
                         ])
                     ])
@@ -177,7 +177,7 @@ class TestExamples(TestCase):
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
-                                        "PROPERTY_VALUE_INLINE", " 'Button 1'"
+                                        "PROPERTY_VALUE_INLINE", "'Button 1'"
                                     )
                                 ])
                             ])
@@ -186,7 +186,7 @@ class TestExamples(TestCase):
                             Token("PROPERTY_NAME", "size_hint"),
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
-                                    Token("PROPERTY_VALUE_INLINE", " 0.5, 0.5")
+                                    Token("PROPERTY_VALUE_INLINE", "0.5, 0.5")
                                 ])
                             ])
                         ])
@@ -212,7 +212,7 @@ class TestExamples(TestCase):
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
-                                        "PROPERTY_VALUE_INLINE", " 'Button 1'"
+                                        "PROPERTY_VALUE_INLINE", "'Button 1'"
                                     )
                                 ])
                             ])
@@ -227,7 +227,7 @@ class TestExamples(TestCase):
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
-                                        "PROPERTY_VALUE_INLINE", " 'Button 2'"
+                                        "PROPERTY_VALUE_INLINE", "'Button 2'"
                                     )
                                 ])
                             ])
@@ -253,7 +253,7 @@ class TestExamples(TestCase):
                         Tree(Token("RULE", "property_value"), [
                             Tree(Token("RULE", "property_value_inline"), [
                                 Token(
-                                    "PROPERTY_VALUE_INLINE", " 'Button 1'"
+                                    "PROPERTY_VALUE_INLINE", "'Button 1'"
                                 )
                             ])
                         ])
@@ -262,7 +262,7 @@ class TestExamples(TestCase):
                         Token("PROPERTY_NAME", "size_hint"),
                         Tree(Token("RULE", "property_value"), [
                             Tree(Token("RULE", "property_value_inline"), [
-                                Token("PROPERTY_VALUE_INLINE", " 0.5, 1")
+                                Token("PROPERTY_VALUE_INLINE", "0.5, 1")
                             ])
                         ])
                     ])
@@ -276,7 +276,7 @@ class TestExamples(TestCase):
                         Tree(Token("RULE", "property_value"), [
                             Tree(Token("RULE", "property_value_inline"), [
                                 Token(
-                                    "PROPERTY_VALUE_INLINE", " 'Button 2'"
+                                    "PROPERTY_VALUE_INLINE", "'Button 2'"
                                 )
                             ])
                         ])
@@ -303,7 +303,7 @@ class TestExamples(TestCase):
                         Tree(Token("RULE", "property_value"), [
                             Tree(Token("RULE", "property_value_inline"), [
                                 Token(
-                                    "PROPERTY_VALUE_INLINE", ' "We Will"'
+                                    "PROPERTY_VALUE_INLINE", '"We Will"'
                                 )
                             ])])
                     ]),
@@ -311,7 +311,7 @@ class TestExamples(TestCase):
                         Token("PROPERTY_NAME", "pos"),
                         Tree(Token("RULE", "property_value"), [
                             Tree(Token("RULE", "property_value_inline"), [
-                                Token("PROPERTY_VALUE_INLINE", " 100, 100")
+                                Token("PROPERTY_VALUE_INLINE", "100, 100")
                             ])
                         ])
                     ]),
@@ -319,7 +319,7 @@ class TestExamples(TestCase):
                         Token("PROPERTY_NAME", "size_hint"),
                         Tree(Token("RULE", "property_value"), [
                             Tree(Token("RULE", "property_value_inline"), [
-                                Token("PROPERTY_VALUE_INLINE", " .2, .4")
+                                Token("PROPERTY_VALUE_INLINE", ".2, .4")
                             ])
                         ])
                     ])
@@ -333,7 +333,7 @@ class TestExamples(TestCase):
                         Tree(Token("RULE", "property_value"), [
                             Tree(Token("RULE", "property_value_inline"), [
                                 Token(
-                                    "PROPERTY_VALUE_INLINE", ' "Wee Wiill"'
+                                    "PROPERTY_VALUE_INLINE", '"Wee Wiill"'
                                 )
                             ])
                         ])
@@ -342,7 +342,7 @@ class TestExamples(TestCase):
                         Token("PROPERTY_NAME", "pos"),
                         Tree(Token("RULE", "property_value"), [
                             Tree(Token("RULE", "property_value_inline"), [
-                                Token("PROPERTY_VALUE_INLINE", " 200, 200")
+                                Token("PROPERTY_VALUE_INLINE", "200, 200")
                             ])
                         ])
                     ]),
@@ -350,7 +350,7 @@ class TestExamples(TestCase):
                         Token("PROPERTY_NAME", "size_hint"),
                         Tree(Token("RULE", "property_value"), [
                             Tree(Token("RULE", "property_value_inline"), [
-                                Token("PROPERTY_VALUE_INLINE", " .4, .2")
+                                Token("PROPERTY_VALUE_INLINE", ".4, .2")
                             ])
                         ])
                     ])
@@ -365,7 +365,7 @@ class TestExamples(TestCase):
                             Tree(Token("RULE", "property_value_inline"), [
                                 Token(
                                     "PROPERTY_VALUE_INLINE",
-                                    ' "ROCK YOU!!"'
+                                    '"ROCK YOU!!"'
                                 )
                             ])
                         ])
@@ -376,7 +376,7 @@ class TestExamples(TestCase):
                             Tree(Token("RULE", "property_value_inline"), [
                                 Token(
                                     "PROPERTY_VALUE_INLINE",
-                                    " {'x': .3, 'y': .6}"
+                                    "{'x': .3, 'y': .6}"
                                 )
                             ])
                         ])
@@ -385,7 +385,7 @@ class TestExamples(TestCase):
                         Token("PROPERTY_NAME", "size_hint"),
                         Tree(Token("RULE", "property_value"), [
                             Tree(Token("RULE", "property_value_inline"), [
-                                Token("PROPERTY_VALUE_INLINE", " .5, .2")
+                                Token("PROPERTY_VALUE_INLINE", ".5, .2")
                             ])
                         ])
                     ])
@@ -429,7 +429,7 @@ class TestExamples(TestCase):
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
-                                        "PROPERTY_VALUE_INLINE", " 0, 1, 0, 1"
+                                        "PROPERTY_VALUE_INLINE", "0, 1, 0, 1"
                                     )
                                 ])
                             ])
@@ -443,7 +443,7 @@ class TestExamples(TestCase):
                             Token("PROPERTY_NAME", "pos"),
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
-                                    Token("PROPERTY_VALUE_INLINE", " self.pos")
+                                    Token("PROPERTY_VALUE_INLINE", "self.pos")
                                 ])
                             ])
                         ]),
@@ -452,7 +452,7 @@ class TestExamples(TestCase):
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
-                                        "PROPERTY_VALUE_INLINE", " self.size"
+                                        "PROPERTY_VALUE_INLINE", "self.size"
                                     )
                                 ])
                             ])
@@ -499,7 +499,7 @@ class TestExamples(TestCase):
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
-                                        " 0, 1, 0, 1"
+                                        "0, 1, 0, 1"
                                     )
                                 ])
                             ])
@@ -513,7 +513,7 @@ class TestExamples(TestCase):
                             Token("PROPERTY_NAME", "pos"),
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
-                                    Token("PROPERTY_VALUE_INLINE", " self.pos")
+                                    Token("PROPERTY_VALUE_INLINE", "self.pos")
                                 ])
                             ])
                         ]),
@@ -522,7 +522,7 @@ class TestExamples(TestCase):
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
-                                        "PROPERTY_VALUE_INLINE", " self.size"
+                                        "PROPERTY_VALUE_INLINE", "self.size"
                                     )
                                 ])
                             ])
@@ -538,7 +538,7 @@ class TestExamples(TestCase):
                         Tree(Token("RULE", "property_value"), [
                             Tree(Token("RULE", "property_value_inline"), [
                                 Token(
-                                    "PROPERTY_VALUE_INLINE", " 'Hello World!!'"
+                                    "PROPERTY_VALUE_INLINE", "'Hello World!!'"
                                 )
                             ])
                         ])
@@ -547,7 +547,7 @@ class TestExamples(TestCase):
                         Token("PROPERTY_NAME", "size_hint"),
                         Tree(Token("RULE", "property_value"), [
                             Tree(Token("RULE", "property_value_inline"), [
-                                Token("PROPERTY_VALUE_INLINE", " .5, .5")
+                                Token("PROPERTY_VALUE_INLINE", ".5, .5")
                             ])
                         ])
                     ]),
@@ -557,7 +557,7 @@ class TestExamples(TestCase):
                             Tree(Token("RULE", "property_value_inline"), [
                                 Token(
                                     "PROPERTY_VALUE_INLINE",
-                                    " {'center_x':.5, 'center_y': .5}"
+                                    "{'center_x':.5, 'center_y': .5}"
                                 )
                             ])
                         ])
@@ -601,7 +601,7 @@ class TestExamples(TestCase):
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
-                                        "PROPERTY_VALUE_INLINE", " 0, 1, 0, 1"
+                                        "PROPERTY_VALUE_INLINE", "0, 1, 0, 1"
                                     )
                                 ])
                             ])
@@ -615,7 +615,7 @@ class TestExamples(TestCase):
                             Token("PROPERTY_NAME", "pos"),
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
-                                    Token("PROPERTY_VALUE_INLINE", " self.pos")
+                                    Token("PROPERTY_VALUE_INLINE", "self.pos")
                                 ])
                             ])
                         ]),
@@ -624,7 +624,7 @@ class TestExamples(TestCase):
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
-                                        "PROPERTY_VALUE_INLINE", " self.size"
+                                        "PROPERTY_VALUE_INLINE", "self.size"
                                     )
                                 ])
                             ])
@@ -653,7 +653,7 @@ class TestExamples(TestCase):
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
                                         (
-                                            " 'http://www.everythingzoomer.com"
+                                            "'http://www.everythingzoomer.com"
                                             "/wp-content/uploads/2013/01/"
                                             "Monday-joke-289x277.jpg'"
                                         )
@@ -664,7 +664,7 @@ class TestExamples(TestCase):
                             Token("PROPERTY_NAME", "size_hint"),
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
-                                    Token("PROPERTY_VALUE_INLINE", " 1, .5")
+                                    Token("PROPERTY_VALUE_INLINE", "1, .5")
                                 ])
                             ])
                         ]), Tree(Token("RULE", "widget_property"), [
@@ -673,7 +673,7 @@ class TestExamples(TestCase):
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
-                                        " {'center_x':.5, 'center_y': .5}"
+                                        "{'center_x':.5, 'center_y': .5}"
                                     )
                                 ])
                             ])
@@ -690,7 +690,7 @@ class TestExamples(TestCase):
                             Tree(Token("RULE", "property_value_inline"), [
                                 Token(
                                     "PROPERTY_VALUE_INLINE", (
-                                        " 'http://www.stuffistumbledupon.com/"
+                                        "'http://www.stuffistumbledupon.com/"
                                         "wp-content/uploads/2012/05/Have-you-"
                                         "seen-this-dog-because-its-awesome-"
                                         "meme-puppy-doggy.jpg'"
@@ -715,7 +715,7 @@ class TestExamples(TestCase):
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
                                         (
-                                            " 'http://www.stuffistumbledupon"
+                                            "'http://www.stuffistumbledupon"
                                             ".com/wp-content/uploads/2012/04/"
                                             "Get-a-Girlfriend-Meme-empty-"
                                             "wallet.jpg'"
@@ -728,7 +728,7 @@ class TestExamples(TestCase):
                             Token("PROPERTY_NAME", "size_hint"),
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
-                                    Token("PROPERTY_VALUE_INLINE", " 1, .5")
+                                    Token("PROPERTY_VALUE_INLINE", "1, .5")
                                 ])
                             ])
                         ]),
@@ -738,7 +738,7 @@ class TestExamples(TestCase):
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
-                                        " {'center_x':.5, 'center_y': .5}"
+                                        "{'center_x':.5, 'center_y': .5}"
                                     )
                                 ])
                             ])
@@ -784,7 +784,7 @@ class TestExamples(TestCase):
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
-                                        " 10, 10, 10, 10"
+                                        "10, 10, 10, 10"
                                     )
                                 ])
                             ])
@@ -796,7 +796,7 @@ class TestExamples(TestCase):
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
                                         (
-                                            " '../examples/widgets/sequenced"
+                                            "'../examples/widgets/sequenced"
                                             "_images/data/images/button_white"
                                             ".png'"
                                         )
@@ -808,7 +808,7 @@ class TestExamples(TestCase):
                             Token("PROPERTY_NAME", "pos"),
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
-                                    Token("PROPERTY_VALUE_INLINE", " self.pos")
+                                    Token("PROPERTY_VALUE_INLINE", "self.pos")
                                 ])
                             ])
                         ]),
@@ -817,7 +817,7 @@ class TestExamples(TestCase):
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
-                                        "PROPERTY_VALUE_INLINE", " self.size"
+                                        "PROPERTY_VALUE_INLINE", "self.size"
                                     )
                                 ])
                             ])
@@ -839,7 +839,7 @@ class TestExamples(TestCase):
                         Token("PROPERTY_NAME", "size_hint"),
                         Tree(Token("RULE", "property_value"), [
                             Tree(Token("RULE", "property_value_inline"), [
-                                Token("PROPERTY_VALUE_INLINE", " .9, .9")
+                                Token("PROPERTY_VALUE_INLINE", ".9, .9")
                             ])
                         ])
                     ]),
@@ -849,7 +849,7 @@ class TestExamples(TestCase):
                             Tree(Token("RULE", "property_value_inline"), [
                                 Token(
                                     "PROPERTY_VALUE_INLINE",
-                                    " {'center_x': .5, 'center_y': .5}"
+                                    "{'center_x': .5, 'center_y': .5}"
                                 )
                             ])
                         ])
@@ -872,7 +872,7 @@ class TestExamples(TestCase):
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
-                                        ' "I don\'t suffer from insanity, I'
+                                        '"I don\'t suffer from insanity, I'
                                         ' enjoy every minute of it"'
                                     )
                                 ])
@@ -884,7 +884,7 @@ class TestExamples(TestCase):
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
-                                        " self.width-20, self.height-20"
+                                        "self.width-20, self.height-20"
                                     )
                                 ])
                             ])
@@ -893,7 +893,7 @@ class TestExamples(TestCase):
                             Token("PROPERTY_NAME", "valign"),
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
-                                    Token("PROPERTY_VALUE_INLINE", " 'top'")
+                                    Token("PROPERTY_VALUE_INLINE", "'top'")
                                 ])
                             ])
                         ])
@@ -909,7 +909,7 @@ class TestExamples(TestCase):
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
                                         (
-                                            ' "When I was born I was so'
+                                            '"When I was born I was so'
                                             ' surprised; I didn\'t speak for a'
                                             ' year and a half."'
                                         )
@@ -923,7 +923,7 @@ class TestExamples(TestCase):
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
-                                        " self.width-20, self.height-20"
+                                        "self.width-20, self.height-20"
                                     )
                                 ])
                             ])
@@ -932,7 +932,7 @@ class TestExamples(TestCase):
                             Token("PROPERTY_NAME", "valign"),
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
-                                    Token("PROPERTY_VALUE_INLINE", " 'middle'")
+                                    Token("PROPERTY_VALUE_INLINE", "'middle'")
                                 ])
                             ])
                         ]),
@@ -940,7 +940,7 @@ class TestExamples(TestCase):
                             Token("PROPERTY_NAME", "halign"),
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
-                                    Token("PROPERTY_VALUE_INLINE", " 'center'")
+                                    Token("PROPERTY_VALUE_INLINE", "'center'")
                                 ])
                             ])
                         ])
@@ -956,7 +956,7 @@ class TestExamples(TestCase):
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
                                         (
-                                            ' "A consultant is someone who'
+                                            '"A consultant is someone who'
                                             ' takes a subject you understand'
                                             ' and makes it sound confusing"'
                                         )
@@ -970,7 +970,7 @@ class TestExamples(TestCase):
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
-                                        " self.width-20, self.height-20"
+                                        "self.width-20, self.height-20"
                                     )
                                 ])
                             ])
@@ -979,7 +979,7 @@ class TestExamples(TestCase):
                             Token("PROPERTY_NAME", "valign"),
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
-                                    Token("PROPERTY_VALUE_INLINE", " 'bottom'")
+                                    Token("PROPERTY_VALUE_INLINE", "'bottom'")
                                 ])
                             ])
                         ]),
@@ -989,7 +989,7 @@ class TestExamples(TestCase):
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
-                                        " 'justify'"
+                                        "'justify'"
                                     )
                                 ])
                             ])
@@ -1035,7 +1035,7 @@ class TestExamples(TestCase):
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
-                                        " 10, 10, 10, 10"
+                                        "10, 10, 10, 10"
                                     )
                                 ])
                             ])
@@ -1046,7 +1046,7 @@ class TestExamples(TestCase):
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
-                                        " self.background_image.texture"
+                                        "self.background_image.texture"
                                     )
                                 ])
                             ])
@@ -1055,7 +1055,7 @@ class TestExamples(TestCase):
                             Token("PROPERTY_NAME", "pos"),
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
-                                    Token("PROPERTY_VALUE_INLINE", " self.pos")
+                                    Token("PROPERTY_VALUE_INLINE", "self.pos")
                                 ])
                             ])
                         ]),
@@ -1064,7 +1064,7 @@ class TestExamples(TestCase):
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
-                                        "PROPERTY_VALUE_INLINE", " self.size"
+                                        "PROPERTY_VALUE_INLINE", "self.size"
                                     )
                                 ])
                             ])
@@ -1086,7 +1086,7 @@ class TestExamples(TestCase):
                         Token("PROPERTY_NAME", "size_hint"),
                         Tree(Token("RULE", "property_value"), [
                             Tree(Token("RULE", "property_value_inline"), [
-                                Token("PROPERTY_VALUE_INLINE", " .9, .9")
+                                Token("PROPERTY_VALUE_INLINE", ".9, .9")
                             ])
                         ])
                     ]),
@@ -1096,7 +1096,7 @@ class TestExamples(TestCase):
                             Tree(Token("RULE", "property_value_inline"), [
                                 Token(
                                     "PROPERTY_VALUE_INLINE",
-                                    " {'center_x': .5, 'center_y': .5}"
+                                    "{'center_x': .5, 'center_y': .5}"
                                 )
                             ])
                         ])
@@ -1119,7 +1119,7 @@ class TestExamples(TestCase):
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
-                                        ' "I don\'t suffer from insanity, I'
+                                        '"I don\'t suffer from insanity, I'
                                         ' enjoy every minute of it"'
                                     )
                                 ])
@@ -1131,7 +1131,7 @@ class TestExamples(TestCase):
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
-                                        " self.width-20, self.height-20"
+                                        "self.width-20, self.height-20"
                                     )
                                 ])
                             ])
@@ -1140,7 +1140,7 @@ class TestExamples(TestCase):
                             Token("PROPERTY_NAME", "valign"),
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
-                                    Token("PROPERTY_VALUE_INLINE", " 'top'")
+                                    Token("PROPERTY_VALUE_INLINE", "'top'")
                                 ])
                             ])
                         ])
@@ -1155,7 +1155,7 @@ class TestExamples(TestCase):
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
-                                        ' "When I was born I was so'
+                                        '"When I was born I was so'
                                         ' surprised; I didn\'t speak for a'
                                         ' year and a half."'
                                     )
@@ -1168,7 +1168,7 @@ class TestExamples(TestCase):
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
-                                        " self.width-20, self.height-20"
+                                        "self.width-20, self.height-20"
                                     )
                                 ])
                             ])
@@ -1177,7 +1177,7 @@ class TestExamples(TestCase):
                             Token("PROPERTY_NAME", "valign"),
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
-                                    Token("PROPERTY_VALUE_INLINE", " 'middle'")
+                                    Token("PROPERTY_VALUE_INLINE", "'middle'")
                                 ])
                             ])
                         ]),
@@ -1185,7 +1185,7 @@ class TestExamples(TestCase):
                             Token("PROPERTY_NAME", "halign"),
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
-                                    Token("PROPERTY_VALUE_INLINE", " 'center'")
+                                    Token("PROPERTY_VALUE_INLINE", "'center'")
                                 ])
                             ])
                         ])
@@ -1200,7 +1200,7 @@ class TestExamples(TestCase):
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
-                                        ' "A consultant is someone who'
+                                        '"A consultant is someone who'
                                         ' takes a subject you understand'
                                         ' and makes it sound confusing"'
                                     )
@@ -1213,7 +1213,7 @@ class TestExamples(TestCase):
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
                                         "PROPERTY_VALUE_INLINE",
-                                        " self.width-20, self.height-20"
+                                        "self.width-20, self.height-20"
                                     )
                                 ])
                             ])
@@ -1222,7 +1222,7 @@ class TestExamples(TestCase):
                             Token("PROPERTY_NAME", "valign"),
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
-                                    Token("PROPERTY_VALUE_INLINE", " 'bottom'")
+                                    Token("PROPERTY_VALUE_INLINE", "'bottom'")
                                 ])
                             ])
                         ]),
@@ -1231,7 +1231,7 @@ class TestExamples(TestCase):
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
-                                        "PROPERTY_VALUE_INLINE", " 'justify'"
+                                        "PROPERTY_VALUE_INLINE", "'justify'"
                                     )
                                 ])
                             ])
@@ -1260,7 +1260,6 @@ class TestExamples(TestCase):
                 Tree(Token("RULE", "special_directive"), [
                     Tree(Token("RULE", "set"), [
                         Token("SET_NAME", "__KV_EXT_V__"),
-                        Token("WHITESPACE", " "),
                         Token("SET_VALUE", "(0, 0, 1)")
                     ])
                 ])
@@ -1269,7 +1268,6 @@ class TestExamples(TestCase):
                 Tree(Token("RULE", "special_directive"), [
                     Tree(Token("RULE", "set"), [
                         Token("SET_NAME", "_eat"),
-                        Token("WHITESPACE", " "),
                         Token("SET_VALUE", "lambda *a, **kw: None")
                     ])
                 ])
@@ -1278,7 +1276,6 @@ class TestExamples(TestCase):
                 Tree(Token("RULE", "special_directive"), [
                     Tree(Token("RULE", "set"), [
                         Token("SET_NAME", "_for"),
-                        Token("WHITESPACE", " "),
                         Token("SET_VALUE", (
                             "lambda N, c, a=(), kw={}:"
                             " _eat([c(*a, **kw) for i in range(N)])"
@@ -1290,7 +1287,6 @@ class TestExamples(TestCase):
                 Tree(Token("RULE", "special_directive"), [
                     Tree(Token("RULE", "set"), [
                         Token("SET_NAME", "_forc"),
-                        Token("WHITESPACE", " "),
                         Token("SET_VALUE", (
                             "lambda N, c, a, kw={}:"
                             " _eat([c(a(**kw), **kw) for i in range(N)])"
@@ -1302,7 +1298,6 @@ class TestExamples(TestCase):
                 Tree(Token("RULE", "special_directive"), [
                     Tree(Token("RULE", "set"), [
                         Token("SET_NAME", "_forw"),
-                        Token("WHITESPACE", " "),
                         Token("SET_VALUE", (
                             "lambda p, N, wdg, kw={}:"
                             " _eat([p.add_widget("
@@ -1315,7 +1310,6 @@ class TestExamples(TestCase):
                 Tree(Token("RULE", "special_directive"), [
                     Tree(Token("RULE", "set"), [
                         Token("SET_NAME", "_forws"),
-                        Token("WHITESPACE", " "),
                         Token("SET_VALUE", (
                             "lambda p, wdgs=[]:"
                             " _eat([p.add_widget("
@@ -1329,7 +1323,6 @@ class TestExamples(TestCase):
                 Tree(Token("RULE", "special_directive"), [
                     Tree(Token("RULE", "set"), [
                         Token("SET_NAME", "_swapw"),
-                        Token("WHITESPACE", " "),
                         Token("SET_VALUE", (
                             "lambda a, b: _eat(["
                             "setattr(a, '__swap_ib',"
@@ -1365,7 +1358,6 @@ class TestExamples(TestCase):
                 Tree(Token("RULE", "special_directive"), [
                     Tree(Token("RULE", "import"), [
                         Token("IMPORT_NAME", "Factory"),
-                        Token("WHITESPACE", " "),
                         Token("IMPORT_MODULE", "kivy.factory.Factory")
                     ])
                 ])
@@ -1374,7 +1366,6 @@ class TestExamples(TestCase):
                 Tree(Token("RULE", "special_directive"), [
                     Tree(Token("RULE", "import"), [
                         Token("IMPORT_NAME", "r"),
-                        Token("WHITESPACE", " "),
                         Token("IMPORT_MODULE", "random.random")
                     ])
                 ])
@@ -1387,7 +1378,7 @@ class TestExamples(TestCase):
                     Token("PROPERTY_NAME", "orientation"),
                     Tree(Token("RULE", "property_value"), [
                         Tree(Token("RULE", "property_value_inline"), [
-                            Token("PROPERTY_VALUE_INLINE", " 'vertical'")
+                            Token("PROPERTY_VALUE_INLINE", "'vertical'")
                         ])
                     ])
                 ]),
@@ -1404,7 +1395,7 @@ class TestExamples(TestCase):
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
-                                        "PROPERTY_VALUE_INLINE", " 'vertical'"
+                                        "PROPERTY_VALUE_INLINE", "'vertical'"
                                     )
                                 ])
                             ])
@@ -1420,7 +1411,7 @@ class TestExamples(TestCase):
                                         "RULE", "property_value_inline"
                                     ), [
                                         Token(
-                                            "PROPERTY_VALUE_INLINE", " '_for'"
+                                            "PROPERTY_VALUE_INLINE", "'_for'"
                                         )
                                     ])
                                 ])
@@ -1433,7 +1424,7 @@ class TestExamples(TestCase):
                                     ), [
                                         Token(
                                             "PROPERTY_VALUE_INLINE",
-                                            " _for(5, print, (str(r()), ))"
+                                            "_for(5, print, (str(r()), ))"
                                         )
                                     ])
                                 ])
@@ -1450,7 +1441,7 @@ class TestExamples(TestCase):
                                         "RULE", "property_value_inline"
                                     ), [
                                         Token(
-                                            "PROPERTY_VALUE_INLINE", " '_forc'"
+                                            "PROPERTY_VALUE_INLINE", "'_forc'"
                                         )
                                     ])
                                 ])
@@ -1463,7 +1454,7 @@ class TestExamples(TestCase):
                                     ), [
                                         Token(
                                             "PROPERTY_VALUE_INLINE",
-                                            " _forc(5, print, r)"
+                                            "_forc(5, print, r)"
                                         )
                                     ])
                                 ])
@@ -1479,7 +1470,7 @@ class TestExamples(TestCase):
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
-                                        "PROPERTY_VALUE_INLINE", " 'vertical'"
+                                        "PROPERTY_VALUE_INLINE", "'vertical'"
                                     )
                                 ])
                             ])
@@ -1495,7 +1486,7 @@ class TestExamples(TestCase):
                                         "RULE", "property_value_inline"
                                     ), [
                                         Token(
-                                            "PROPERTY_VALUE_INLINE", " '_forw'"
+                                            "PROPERTY_VALUE_INLINE", "'_forw'"
                                         )
                                     ])
                                 ])
@@ -1534,7 +1525,7 @@ class TestExamples(TestCase):
                                     ), [
                                         Token(
                                             "PROPERTY_VALUE_INLINE",
-                                            " '_forws'"
+                                            "'_forws'"
                                         )
                                     ])
                                 ])
@@ -1591,7 +1582,7 @@ class TestExamples(TestCase):
                                     ), [
                                         Token(
                                             "PROPERTY_VALUE_INLINE",
-                                            " 'clear grid'"
+                                            "'clear grid'"
                                         )
                                     ])
                                 ])
@@ -1604,7 +1595,7 @@ class TestExamples(TestCase):
                                     ), [
                                         Token(
                                             "PROPERTY_VALUE_INLINE",
-                                            " grid.clear_widgets()"
+                                            "grid.clear_widgets()"
                                         )
                                     ])
                                 ])
@@ -1620,7 +1611,7 @@ class TestExamples(TestCase):
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
-                                        "PROPERTY_VALUE_INLINE", " 'vertical'"
+                                        "PROPERTY_VALUE_INLINE", "'vertical'"
                                     )
                                 ])
                             ])
@@ -1635,7 +1626,7 @@ class TestExamples(TestCase):
                                     Tree(Token(
                                         "RULE", "property_value_inline"
                                     ), [
-                                        Token("PROPERTY_VALUE_INLINE", " id_a")
+                                        Token("PROPERTY_VALUE_INLINE", "id_a")
                                     ])
                                 ])
                             ]),
@@ -1645,7 +1636,7 @@ class TestExamples(TestCase):
                                     Tree(Token(
                                         "RULE", "property_value_inline"
                                     ), [
-                                        Token("PROPERTY_VALUE_INLINE", " 'a'")
+                                        Token("PROPERTY_VALUE_INLINE", "'a'")
                                     ])
                                 ])
                             ])
@@ -1660,7 +1651,7 @@ class TestExamples(TestCase):
                                     Tree(Token(
                                         "RULE", "property_value_inline"
                                     ), [
-                                        Token("PROPERTY_VALUE_INLINE", " id_b")
+                                        Token("PROPERTY_VALUE_INLINE", "id_b")
                                     ])
                                 ])
                             ]),
@@ -1670,7 +1661,7 @@ class TestExamples(TestCase):
                                     Tree(Token(
                                         "RULE", "property_value_inline"
                                     ), [
-                                        Token("PROPERTY_VALUE_INLINE", " 'b'")
+                                        Token("PROPERTY_VALUE_INLINE", "'b'")
                                     ])
                                 ])
                             ])
@@ -1685,7 +1676,7 @@ class TestExamples(TestCase):
                                     Tree(Token(
                                         "RULE", "property_value_inline"
                                     ), [
-                                        Token("PROPERTY_VALUE_INLINE", " id_c")
+                                        Token("PROPERTY_VALUE_INLINE", "id_c")
                                     ])
                                 ])
                             ]),
@@ -1695,7 +1686,7 @@ class TestExamples(TestCase):
                                     Tree(Token(
                                         "RULE", "property_value_inline"
                                     ), [
-                                        Token("PROPERTY_VALUE_INLINE", " 'c'")
+                                        Token("PROPERTY_VALUE_INLINE", "'c'")
                                     ])
                                 ])
                             ])
@@ -1710,7 +1701,7 @@ class TestExamples(TestCase):
                                     Tree(Token(
                                         "RULE", "property_value_inline"
                                     ), [
-                                        Token("PROPERTY_VALUE_INLINE", " id_d")
+                                        Token("PROPERTY_VALUE_INLINE", "id_d")
                                     ])
                                 ])
                             ]),
@@ -1720,7 +1711,7 @@ class TestExamples(TestCase):
                                     Tree(Token(
                                         "RULE", "property_value_inline"
                                     ), [
-                                        Token("PROPERTY_VALUE_INLINE", " 'd'")
+                                        Token("PROPERTY_VALUE_INLINE", "'d'")
                                     ])
                                 ])
                             ])
@@ -1735,7 +1726,7 @@ class TestExamples(TestCase):
                             Tree(Token("RULE", "property_value"), [
                                 Tree(Token("RULE", "property_value_inline"), [
                                     Token(
-                                        "PROPERTY_VALUE_INLINE", " 'vertical'"
+                                        "PROPERTY_VALUE_INLINE", "'vertical'"
                                     )
                                 ])
                             ])
@@ -1752,7 +1743,7 @@ class TestExamples(TestCase):
                                     ), [
                                         Token(
                                             "PROPERTY_VALUE_INLINE",
-                                            " 'swap a<->d'"
+                                            "'swap a<->d'"
                                         )
                                     ])
                                 ])
@@ -1765,7 +1756,7 @@ class TestExamples(TestCase):
                                     ), [
                                         Token(
                                             "PROPERTY_VALUE_INLINE",
-                                            " _swapw(id_a, id_d)"
+                                            "_swapw(id_a, id_d)"
                                         )
                                     ])
                                 ])
@@ -1783,7 +1774,7 @@ class TestExamples(TestCase):
                                     ), [
                                         Token(
                                             "PROPERTY_VALUE_INLINE",
-                                            " 'swap b<->c'"
+                                            "'swap b<->c'"
                                         )
                                     ])
                                 ])
@@ -1796,7 +1787,7 @@ class TestExamples(TestCase):
                                     ), [
                                         Token(
                                             "PROPERTY_VALUE_INLINE",
-                                            " _swapw(id_b, id_c)"
+                                            "_swapw(id_b, id_c)"
                                         )
                                     ])
                                 ])
@@ -1812,7 +1803,7 @@ class TestExamples(TestCase):
                         Token("PROPERTY_NAME", "id"),
                         Tree(Token("RULE", "property_value"), [
                             Tree(Token("RULE", "property_value_inline"), [
-                                Token("PROPERTY_VALUE_INLINE", " grid")
+                                Token("PROPERTY_VALUE_INLINE", "grid")
                             ])
                         ])
                     ]),
@@ -1820,7 +1811,7 @@ class TestExamples(TestCase):
                         Token("PROPERTY_NAME", "cols"),
                         Tree(Token("RULE", "property_value"), [
                             Tree(Token("RULE", "property_value_inline"), [
-                                Token("PROPERTY_VALUE_INLINE", " 20")
+                                Token("PROPERTY_VALUE_INLINE", "20")
                             ])
                         ])
                     ])
@@ -1840,7 +1831,7 @@ class TestExamples(TestCase):
                     Token("PROPERTY_NAME", "on_parent"),
                     Tree(Token("RULE", "property_value"), [
                         Tree(Token("RULE", "property_value_inline"), [
-                            Token("PROPERTY_VALUE_INLINE", " self.dummy += 1")
+                            Token("PROPERTY_VALUE_INLINE", "self.dummy += 1")
                         ])
                     ])
                 ]),
@@ -1848,7 +1839,7 @@ class TestExamples(TestCase):
                     Token("PROPERTY_NAME", "dummy"),
                     Tree(Token("RULE", "property_value"), [
                         Tree(Token("RULE", "property_value_inline"), [
-                            Token("PROPERTY_VALUE_INLINE", " 0")
+                            Token("PROPERTY_VALUE_INLINE", "0")
                         ])
                     ])
                 ]),
@@ -1858,7 +1849,7 @@ class TestExamples(TestCase):
                         Tree(Token("RULE", "property_value_inline"), [
                             Token(
                                 "PROPERTY_VALUE_INLINE",
-                                " if self.dummy <= 2:"
+                                "if self.dummy <= 2:"
                                 " _forw(self.parent, 6, Factory.Button)"
                             )
                         ])

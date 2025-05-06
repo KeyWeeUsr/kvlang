@@ -41,7 +41,7 @@ class Docs(Command):
 
 
 NAME = "kvlang"
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 ROOT = Path(__file__).parent
 KWARGS: M[str, str | bool | object] | M[str, Collection[str]] = {
     "name": NAME,

@@ -18,7 +18,6 @@ class TestGrammar(TestCase):
             Tree(Token("RULE", "special"), [
                 Tree(Token("RULE", "special_directive"), [
                     Tree(Token("RULE", "kivy_version"), [
-                        Token("WHITESPACE", " "),
                         Tree(Token("RULE", "version"), [
                             Token("V_MAJOR", major),
                             Token("V_MINOR", minor)
@@ -37,7 +36,6 @@ class TestGrammar(TestCase):
             Tree(Token("RULE", "special"), [
                 Tree(Token("RULE", "special_directive"), [
                     Tree(Token("RULE", "kv_version"), [
-                        Token("WHITESPACE", " "),
                         Tree(Token("RULE", "version"), [
                             Token("V_MAJOR", major),
                             Token("V_MINOR", minor)
@@ -56,7 +54,6 @@ class TestGrammar(TestCase):
             Tree(Token("RULE", "special"), [
                 Tree(Token("RULE", "special_directive"), [
                     Tree(Token("RULE", "kv_version"), [
-                        Token("WHITESPACE", " "),
                         Tree(Token("RULE", "version"), [
                             Token("V_MAJOR", major),
                             Token("V_MINOR", minor)
@@ -67,7 +64,6 @@ class TestGrammar(TestCase):
             Tree(Token("RULE", "special"), [
                 Tree(Token("RULE", "special_directive"), [
                     Tree(Token("RULE", "kivy_version"), [
-                        Token("WHITESPACE", " "),
                         Tree(Token("RULE", "version"), [
                             Token("V_MAJOR", major),
                             Token("V_MINOR", minor)
@@ -227,7 +223,6 @@ class TestQuirks(TestCase):
                         Tree(Token("RULE", "special_directive"), [
                             Tree(Token("RULE", "set"), [
                                 Token("SET_NAME", "0a"),
-                                Token("WHITESPACE", " "),
                                 Token("SET_VALUE", value)
                             ])
                         ])
