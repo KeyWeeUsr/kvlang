@@ -14,15 +14,15 @@ V_PATCH: /\d+/
 V_PRE_RELEASE: "rc" | "a" | "b" | ".dev" | ".post"
 V_BUILD_VERSION: /\d+/
 
-kivy_version: "kivy" WHITESPACE version
-kv_version: "kv" WHITESPACE version
+kivy_version: "kivy" _WHITESPACE version
+kv_version: "kv" _WHITESPACE version
 IMPORT_NAME: ANY
 IMPORT_MODULE: ANY
-import: "import" IMPORT_NAME WHITESPACE IMPORT_MODULE
+import: "import" IMPORT_NAME _WHITESPACE IMPORT_MODULE
 
 SET_NAME: ANY
 SET_VALUE: /.+/
-set: "set" SET_NAME WHITESPACE SET_VALUE
+set: "set" _WHITESPACE SET_NAME _WHITESPACE SET_VALUE
 
 INCLUDE_NAME: ANY
 include: "include" INCLUDE_NAME
@@ -40,10 +40,10 @@ widget: WIDGET ":"?
 widget_property: PROPERTY_NAME ":" property_value
 
 property_value: property_value_inline | property_value_block
-property_value_inline: " "? PROPERTY_VALUE_INLINE " "? _NL
+property_value_inline: _WHITESPACE? PROPERTY_VALUE_INLINE _WHITESPACE? _NL
 PROPERTY_VALUE_INLINE: /[^#\n]+/
 PROPERTY_VALUE_BLOCK_LINE: /[^#\n]+/
-property_value_block_line: PROPERTY_VALUE_BLOCK_LINE " "? _NL
+property_value_block_line: PROPERTY_VALUE_BLOCK_LINE _NL
 property_value_block: _NL _INDENT property_value_block_line+ _DEDENT
 
 canvas: CANVAS
@@ -102,8 +102,8 @@ COMMENT: /\s*#(?!:)[^\n]*/
 
 line: /[^\n]+/
 
-// only (multi-)space supported in SPECIAL
-WHITESPACE: " "+
+// only (multi-)space supported in special
+_WHITESPACE: " "+
 ANY: /\S+/
 _NL: (/\r?\n[\t ]*/)+
 
