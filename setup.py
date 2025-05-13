@@ -12,7 +12,25 @@ class Style(Command):
 
     def run(self):
         from sh import pycodestyle  # type: ignore
-        pycodestyle("--ignore=none", "--exclude=modules", ".")
+        pycodestyle(
+            "--ignore=none", "--exclude=modules",
+            ".", "setup.py", "perf.py", "release.py"
+        )
+
+
+class Lint(Command):
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        from sh import pylint  # type: ignore
+        pylint(
+            "--ignore=none", "--exclude=none",
+            ".", "setup.py", "perf.py", "release.py"
+        )
 
 
 class Type(Command):
@@ -78,7 +96,7 @@ KWARGS: M[str, str | bool | object] | M[str, Collection[str]] = {
         "Programming Language :: Python :: 3 :: Only"
     ],
     "cmdclass": {
-        "style": Style, "type": Type, "docs": Docs
+        "style": Style, "lint": Lint, "type": Type, "docs": Docs
     }
 }
 
