@@ -1,4 +1,6 @@
 # pylint: disable=missing-module-docstring
+from typing import Type
+
 from lark import Transformer, Lark, Tree
 from lark.indenter import Indenter
 
@@ -22,7 +24,7 @@ class TreeIndenter(Indenter):
         yield from super().handle_NL(token)
 
 
-def create_parser(transformer: type[Transformer] = KvTransformer) -> Lark:
+def create_parser(transformer: Type[Transformer] = KvTransformer) -> Lark:
     # pylint: disable=missing-function-docstring
     return Lark(
         load_grammar(), parser="lalr",

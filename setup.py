@@ -4,7 +4,7 @@ Simple packaging script.
 # pylint: disable=import-outside-toplevel
 
 from pathlib import Path
-from typing import Mapping as M, Collection
+from typing import Mapping as M, Collection, Union, List, Tuple
 
 from setuptools import setup, find_packages, Command
 
@@ -95,7 +95,7 @@ EXTRAS = {
     ],
     "release": SHARED_DEV + ["wheel", "twine"]
 }
-KWARGS: M[str, str | bool | object] | M[str, Collection[str]] = {
+KWARGS: Union[M[str, Union[str, bool, object]], M[str, Collection[str]]] = {
     "name": NAME,
     "version": VERSION,
     "packages": find_packages(exclude=["*.tests"]),
