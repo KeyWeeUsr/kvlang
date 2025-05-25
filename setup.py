@@ -71,12 +71,13 @@ class Test(MyCommand):
 
     def run(self):
         # pylint: disable=no-name-in-module
-        from sh import python, coveralls  # type: ignore
+        from sh import coverage, coveralls  # type: ignore
         from glob import glob
-        python(
-            "-m", "unittest", glob("kvlang/tests/*.py"),
+        coverage(
+            "run", "-m", "unittest", glob("kvlang/tests/*.py"),
             _out="/dev/stdout", _err="/dev/stdout"
         )
+        coverage("report", "--show-missing", _out="/dev/stdout")
         coveralls()
 
 
