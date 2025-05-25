@@ -71,12 +71,13 @@ class Test(MyCommand):
 
     def run(self):
         # pylint: disable=no-name-in-module
-        from sh import python  # type: ignore
+        from sh import python, coveralls  # type: ignore
         from glob import glob
         python(
             "-m", "unittest", glob("kvlang/tests/*.py"),
             _out="/dev/stdout", _err="/dev/stdout"
         )
+        coveralls()
 
 
 class Coverage(MyCommand):
@@ -99,7 +100,7 @@ SHARED_DEV = ["sh"]
 EXTRAS_STYLE = SHARED_DEV + ["pycodestyle"]
 EXTRAS_LINT = SHARED_DEV + ["pylint", "yamllint"]
 EXTRAS_TYPING = SHARED_DEV + ["mypy", "types-setuptools"]
-EXTRAS_TEST = SHARED_DEV + ["coverage"]
+EXTRAS_TEST = SHARED_DEV + ["coverage", "coveralls"]
 EXTRAS_DOCS = SHARED_DEV + ["sphinx"]
 EXTRAS = {
     "style": EXTRAS_STYLE,
