@@ -74,7 +74,7 @@ class Test(MyCommand):
         from sh import python  # type: ignore
         from glob import glob
         python(
-            "-m", "unittest", glob("./kvlang/tests/*.py"),
+            "-m", "unittest", glob("kvlang/tests/*.py"),
             _out="/dev/stdout", _err="/dev/stdout"
         )
 
@@ -128,7 +128,7 @@ KWARGS: Union[M[str, Union[str, bool, object]], M[str, Collection[str]]] = {
     "download_url": (
         f"https://github.com/KeyWeeUsr/{NAME}/tarball/{VERSION}"
     ),
-    "install_requires": ["lark>=1.2.2"],
+    "install_requires": ["lark>=1.1.9"],
     "extras_require": EXTRAS,
     "package_data": {
         "kvlang": ["*.lark"]

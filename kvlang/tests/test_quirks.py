@@ -130,7 +130,10 @@ class TestLangQuirks(TestCase):
             )
 
         # pylint: disable=import-error
+        loop = MagicMock(**{"window.dpi": 1})
         noises = [
+            patch("kivy.base.EventLoopBase.ensure_window"),
+            patch("kivy.base.EventLoop", return_value=loop),
             patch("kivy.uix.widget.EventLoop"),
             patch("kivy.uix.label.Label.fbind"),
             patch("kivy.uix.label.Label._create_label"),
