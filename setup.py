@@ -9,13 +9,22 @@ from typing import Mapping as M, Collection, Union, List, Tuple
 from setuptools import setup, find_packages, Command
 
 
-class Style(Command):
-    """Run Pycodestyle."""
+class MyCommand(Command):
+    """Class wrapping in some noise."""
+    user_options: List[Tuple] = []  # type: ignore
+
     def initialize_options(self):
         pass
 
     def finalize_options(self):
         pass
+
+    def run(self):
+        raise NotImplementedError()
+
+
+class Style(MyCommand):
+    """Run Pycodestyle."""
 
     def run(self):
         # pylint: disable=no-name-in-module
@@ -26,13 +35,8 @@ class Style(Command):
         )
 
 
-class Lint(Command):
+class Lint(MyCommand):
     """Run Pylint."""
-    def initialize_options(self):
-        pass
-
-    def finalize_options(self):
-        pass
 
     def run(self):
         # pylint: disable=no-name-in-module
@@ -43,13 +47,8 @@ class Lint(Command):
         )
 
 
-class Typing(Command):
+class Typing(MyCommand):
     """Run MyPy."""
-    def initialize_options(self):
-        pass
-
-    def finalize_options(self):
-        pass
 
     def run(self):
         # pylint: disable=no-name-in-module
@@ -57,19 +56,40 @@ class Typing(Command):
         mypy("--exclude", "modules", "--exclude", "build", ".")
 
 
-class Docs(Command):
+class Docs(MyCommand):
     """Generate RTD locally."""
-    def initialize_options(self):
-        pass
-
-    def finalize_options(self):
-        pass
 
     def run(self):
         # pylint: disable=no-name-in-module
         from sh import sphinx_apidoc, make  # type: ignore
         sphinx_apidoc("-o", "docs", "kvlang", "kvlang/tests")
         make("-C", "docs", "clean", "html")
+
+
+class Test(MyCommand):
+    """Test the package."""
+
+    def run(self):
+        # pylint: disable=no-name-in-module
+        from sh import python  # type: ignore
+        from glob import glob
+        python(
+            "-m", "unittest", glob("./kvlang/tests/*.py"),
+            _out="/dev/stdout", _err="/dev/stdout"
+        )
+
+
+class Coverage(MyCommand):
+    """Test the package."""
+
+    def run(self):
+        # pylint: disable=no-name-in-module
+        from sh import coverage  # type: ignore
+        from glob import glob
+        coverage(
+            "run", "-m", "unittest", glob("./kvlang/tests/*.py"),
+            _err="/dev/stdout"
+        )
 
 
 NAME = "kvlang"
@@ -121,7 +141,8 @@ KWARGS: Union[M[str, Union[str, bool, object]], M[str, Collection[str]]] = {
         "Programming Language :: Python :: 3 :: Only"
     ],
     "cmdclass": {
-        "style": Style, "lint": Lint, "typing": Typing, "docs": Docs
+        "style": Style, "lint": Lint, "typing": Typing,
+        "docs": Docs, "test": Test
     }
 }
 
