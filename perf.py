@@ -7,6 +7,7 @@ from statistics import mean
 from time import time
 from typing import Dict, Iterable
 
+# pylint: disable=import-error
 from kivy.lang import Builder, Parser  # type: ignore
 from kvlang import parse
 
