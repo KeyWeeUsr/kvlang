@@ -11,6 +11,13 @@ from unittest.mock import patch, MagicMock
 
 CHECKED_VERSIONS = (
     (2, 3, 1),
+    (2, 3, 0),
+    (2, 2, 1),
+    (2, 2, 0),
+    (2, 1, 0),
+    (2, 0, 0),
+    (1, 11, 1),
+    (1, 11, 0),
 )
 SAMPLE = """
 #:set    x      "abc"
@@ -101,29 +108,15 @@ class TestLangQuirks(TestCase):
         del environ["KIVY_NO_CONFIG"]
 
     def test_quirks(self):
-        ignored_mods = ("kivy._version", "kivy")
-        patched_modules = {
-            "kivy.compat": MagicMock(),
-            "kivy.utils": MagicMock(),
-            "kivy.logger": MagicMock(),
-            "kivy.config": MagicMock(),
-            "kivy.deps": MagicMock(__path__=[]),
-            "kivy.modules": MagicMock(),
-        }
-        with patch.dict(sys.modules, patched_modules):
-            # pylint: disable=import-error
-            from kivy._version import (  # type: ignore
-                __version__ as kivy_version
-            )
-            version = tuple(int(num) for num in kivy_version.split("."))
-            for key, val in sys.modules.items():
-                if not key.startswith("kivy"):
-                    continue
-                if not isinstance(val, MagicMock) and key not in ignored_mods:
-                    # pylint: disable=broad-exception-raised
-                    raise Exception(f"Unexpected import: {key} ({val})")
+        if sys.version_info.major == 3 and sys.version_info.minor <= 7:
+            import pkg_resources
+            dist = pkg_resources.get_distribution("kivy")
+            version = [int(num) for num in dist.version.split(".")]
+        else:
+            from importlib import metadata
+            version = [int(num) for num in metadata.version("kivy").split(".")]
 
-        if version not in CHECKED_VERSIONS:
+        if tuple(version) not in CHECKED_VERSIONS:
             self.skipTest(
                 "Unchecked version."
                 " Check and add if the same or implement the new behavior."
