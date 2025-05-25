@@ -4,6 +4,7 @@
 Test weird allowed things in Kvlang due to flexible token parsing or eval().
 """
 import sys
+from contextlib import ExitStack
 from os import environ
 from unittest import TestCase, main
 from unittest.mock import patch, MagicMock
@@ -110,6 +111,7 @@ class TestLangQuirks(TestCase):
             "kivy.modules": MagicMock(),
         }
         with patch.dict(sys.modules, patched_modules):
+            # pylint: disable=import-error
             from kivy._version import (  # type: ignore
                 __version__ as kivy_version
             )
@@ -127,14 +129,25 @@ class TestLangQuirks(TestCase):
                 " Check and add if the same or implement the new behavior."
             )
 
-        from kivy.lang import Builder  # type: ignore
-        root = Builder.load_string(SAMPLE)
-        assert root.evaluated
-        assert len(root.children) == 1 + 4, root.children
-        for child in root.children:
-            if "Widget" in str(child):
-                continue
-            assert child.text == "True"
+        # pylint: disable=import-error
+        noises = [
+            patch("kivy.uix.widget.EventLoop"),
+            patch("kivy.uix.label.Label.fbind"),
+            patch("kivy.uix.label.Label._create_label"),
+            patch("kivy.lang.builder.BuilderBase._build_canvas"),
+        ]
+        with ExitStack() as patches:
+            for noise in noises:
+                patches.enter_context(noise)
+
+            from kivy.lang import Builder  # type: ignore
+            root = Builder.load_string(SAMPLE)
+            assert root.evaluated
+            assert len(root.children) == 1 + 4, root.children
+            for child in root.children:
+                if "Widget" in str(child):
+                    continue
+                assert child.text == "True"
 
 
 if __name__ == "__main__":
