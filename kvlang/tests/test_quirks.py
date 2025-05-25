@@ -1,3 +1,8 @@
+# pylint: disable=import-outside-toplevel # always, to auto-clean import cache
+# pylint: disable=missing-class-docstring,missing-function-docstring
+"""
+Test weird allowed things in Kvlang due to flexible token parsing or eval().
+"""
 import sys
 from os import environ
 from unittest import TestCase, main
@@ -75,7 +80,6 @@ BoxLayout:
 
 
 def clean():
-    import sys
     for name in list(sys.modules.keys()):
         if not name.startswith("kivy"):
             continue
@@ -114,6 +118,7 @@ class TestLangQuirks(TestCase):
                 if not key.startswith("kivy"):
                     continue
                 if not isinstance(val, MagicMock) and key not in ignored_mods:
+                    # pylint: disable=broad-exception-raised
                     raise Exception(f"Unexpected import: {key} ({val})")
 
         if version not in CHECKED_VERSIONS:
@@ -130,3 +135,7 @@ class TestLangQuirks(TestCase):
             if "Widget" in str(child):
                 continue
             assert child.text == "True"
+
+
+if __name__ == "__main__":
+    main()

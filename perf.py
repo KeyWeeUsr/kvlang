@@ -56,7 +56,7 @@ def measure_kivy(text: str) -> Dict[str, Iterable[float]]:
     }
 
 
-def measure_kvlang_build_root(text: str) -> Iterable[float]:
+def measure_kvlang_build_root(_: str) -> Iterable[float]:
     """Measure Kvlang parsing into a tree."""
     return [-0.001]
 

@@ -1,3 +1,4 @@
+# pylint: disable=missing-module-docstring
 from lark import Transformer, Lark, Tree
 from lark.indenter import Indenter
 
@@ -5,6 +6,8 @@ from kvlang.grammar import load_grammar
 from kvlang.transformer import KvTransformer
 
 
+# pylint: disable=missing-class-docstring
+# pylint: disable=too-few-public-methods
 class TreeIndenter(Indenter):
     NL_type = '_NL'
     OPEN_PAREN_types = []
@@ -20,6 +23,7 @@ class TreeIndenter(Indenter):
 
 
 def create_parser(transformer: type[Transformer] = KvTransformer) -> Lark:
+    # pylint: disable=missing-function-docstring
     return Lark(
         load_grammar(), parser="lalr",
         postlex=TreeIndenter(), transformer=transformer()

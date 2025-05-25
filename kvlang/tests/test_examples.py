@@ -1,3 +1,6 @@
+# pylint: disable=import-outside-toplevel # always, to auto-clean import cache
+# pylint: disable=too-many-lines
+# pylint: disable=missing-function-docstring
 """
 Parse examples from Kivy documentation (MIT) or other places.
 """
@@ -579,7 +582,7 @@ class TestExamples(TestCase):
         with open(doc, encoding="utf-8") as file:
             for _ in range(414):
                 next(file)
-            for line in file:
+            for _ in file:
                 lines += [next(file)[4:] for _ in range(12)]
                 break
 
@@ -761,7 +764,7 @@ class TestExamples(TestCase):
         with open(doc, encoding="utf-8") as file:
             for _ in range(510):
                 next(file)
-            for line in file:
+            for _ in file:
                 lines += [next(file)[4:] for _ in range(21)]
                 break
 
@@ -1012,7 +1015,7 @@ class TestExamples(TestCase):
         with open(doc, encoding="utf-8") as file:
             for _ in range(576):
                 next(file)
-            for line in file:
+            for _ in file:
                 lines += [next(file)[4:] for _ in range(28)]
                 break
 
@@ -1254,7 +1257,7 @@ class TestExamples(TestCase):
         with open(doc, encoding="utf-8") as file:
             for _ in range(644):
                 next(file)
-            for line in file:
+            for _ in file:
                 lines += [next(file)[4:] for _ in range(28)]
                 break
 
@@ -1348,7 +1351,7 @@ class TestExamples(TestCase):
             ])
         ])
 
-        with open(KVEXT / "kvext.kv") as file:
+        with open(KVEXT / "kvext.kv", encoding="utf-8") as file:
             self.assertEqual(parse(file.read()), tree)
 
     def test_kvext_example(self):

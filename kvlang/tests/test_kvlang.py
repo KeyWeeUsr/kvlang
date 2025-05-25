@@ -1,6 +1,12 @@
+# pylint: disable=import-outside-toplevel # always, to auto-clean import cache
+# pylint: disable=missing-class-docstring,missing-function-docstring
+"""
+Test basic parsing functionality and tree appearance to the user.
+"""
 from unittest import TestCase, main, util
 from lark import Tree, Token
 
+# pylint: disable=protected-access
 util._MAX_LENGTH = 999999  # type: ignore
 
 
