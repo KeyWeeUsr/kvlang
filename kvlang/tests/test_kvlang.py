@@ -115,10 +115,35 @@ class TestGrammar(TestCase):
 
     def test_root_widget_tree(self):
         from kvlang import parse
+        text = "Widget:\n Widget:\n  Widget:"
+        self.assertEqual(parse(text), Tree(Token("RULE", "start"), [
+            Tree(Token("RULE", "widget_tree"), [
+                Tree(Token("RULE", "widget"), [
+                    Token("WIDGET", "Widget")
+                ]),
+                Tree(Token("RULE", "widget_tree"), [
+                    Tree(Token("RULE", "widget"), [
+                        Token("WIDGET", "Widget")
+                    ]),
+                    Tree(Token("RULE", "widget_tree"), [
+                        Tree(Token("RULE", "widget"), [
+                            Token("WIDGET", "Widget")
+                        ])
+                    ])
+                ])
+            ])
+        ]))
+
+    def test_root_widget_tree_with_comments(self):
+        from kvlang import parse
         for prefix, comment in (
                 ("", "text"), (" ", " text"), ("    ", "    text")
         ):
-            text = "Widget:\n Widget:\n  Widget:"
+            text = (
+                f"Widget:{prefix}#{comment}\n"
+                f" Widget:{prefix}#{comment}\n"
+                f"  Widget:{prefix}#{comment}"
+            )
             self.assertEqual(parse(text), Tree(Token("RULE", "start"), [
                 Tree(Token("RULE", "widget_tree"), [
                     Tree(Token("RULE", "widget"), [
@@ -181,10 +206,37 @@ class TestGrammar(TestCase):
 
     def test_root_widget_rule_tree(self):
         from kvlang import parse
+        text = "<MyWidget>:\n Widget:\n  Widget:"
+        self.assertEqual(parse(text), Tree(Token("RULE", "start"), [
+            Tree(Token("RULE", "widget_rule_tree"), [
+                Tree(Token("RULE", "widget_rule"), [
+                    Tree(Token("RULE", "widget_rule_name"), [
+                        Token("WIDGET_NAME", "MyWidget")
+                    ])
+                ]),
+                Tree(Token("RULE", "widget_tree"), [
+                    Tree(Token("RULE", "widget"), [
+                        Token("WIDGET", "Widget")
+                    ]),
+                    Tree(Token("RULE", "widget_tree"), [
+                        Tree(Token("RULE", "widget"), [
+                            Token("WIDGET", "Widget")
+                        ])
+                    ])
+                ])
+            ])
+        ]))
+
+    def test_root_widget_rule_tree_with_comments(self):
+        from kvlang import parse
         for prefix, comment in (
                 ("", "text"), (" ", " text"), ("    ", "    text")
         ):
-            text = "<MyWidget>:\n Widget:\n  Widget:"
+            text = (
+                f"<MyWidget>:{prefix}#{comment}\n"
+                f" Widget:{prefix}#{comment}\n"
+                f"  Widget:{prefix}#{comment}"
+            )
             self.assertEqual(parse(text), Tree(Token("RULE", "start"), [
                 Tree(Token("RULE", "widget_rule_tree"), [
                     Tree(Token("RULE", "widget_rule"), [

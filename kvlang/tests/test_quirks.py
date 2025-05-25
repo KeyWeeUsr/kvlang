@@ -113,7 +113,7 @@ class TestLangQuirks(TestCase):
             from kivy._version import (  # type: ignore
                 __version__ as kivy_version
             )
-            version = tuple([int(num) for num in kivy_version.split(".")])
+            version = tuple(int(num) for num in kivy_version.split("."))
             for key, val in sys.modules.items():
                 if not key.startswith("kivy"):
                     continue
