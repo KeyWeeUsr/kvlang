@@ -1,5 +1,5 @@
 """
-Examples from Kivy documentation (MIT)
+Parse examples from Kivy documentation (MIT) or other places.
 """
 
 from pathlib import Path
@@ -9,6 +9,7 @@ from lark import Tree, Token
 
 from kvlang.common import ROOT
 
+# pylint: disable=protected-access
 util._MAX_LENGTH = 999999  # type: ignore
 MODULES = Path(ROOT).parent / "modules"
 KIVY = MODULES / "kivy"
@@ -16,11 +17,17 @@ KVEXT = MODULES / "kvext"
 
 
 def load(name: str) -> str:
+    """
+    Load from Kivy examples.
+    """
     with open(Path(ROOT) / "examples" / name, encoding="utf-8") as file:
         return file.read()
 
 
 class TestExamples(TestCase):
+    """
+    Main test case.
+    """
     def test_getting_started(self):
         from kvlang import parse
         tree = Tree(Token("RULE", "start"), [

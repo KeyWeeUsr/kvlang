@@ -1,9 +1,16 @@
+"""
+Simple packaging script.
+"""
+# pylint: disable=import-outside-toplevel
+
 from pathlib import Path
+from typing import Mapping as M, Collection
+
 from setuptools import setup, find_packages, Command
-from typing import Mapping as M, List, Union, Collection, Dict
 
 
 class Style(Command):
+    """Run Pycodestyle."""
     def initialize_options(self):
         pass
 
@@ -11,6 +18,7 @@ class Style(Command):
         pass
 
     def run(self):
+        # pylint: disable=no-name-in-module
         from sh import pycodestyle  # type: ignore
         pycodestyle(
             "--ignore=none", "--exclude=modules",
@@ -19,6 +27,7 @@ class Style(Command):
 
 
 class Lint(Command):
+    """Run Pylint."""
     def initialize_options(self):
         pass
 
@@ -26,14 +35,16 @@ class Lint(Command):
         pass
 
     def run(self):
+        # pylint: disable=no-name-in-module
         from sh import pylint  # type: ignore
         pylint(
-            "--ignore=none", "--exclude=none",
+            "--ignore=docs,modules",
             ".", "setup.py", "perf.py", "release.py"
         )
 
 
 class Type(Command):
+    """Run MyPy."""
     def initialize_options(self):
         pass
 
@@ -41,11 +52,13 @@ class Type(Command):
         pass
 
     def run(self):
+        # pylint: disable=no-name-in-module
         from sh import mypy  # type: ignore
         mypy("--exclude", "modules", "--exclude", "build", ".")
 
 
 class Docs(Command):
+    """Generate RTD locally."""
     def initialize_options(self):
         pass
 
@@ -53,6 +66,7 @@ class Docs(Command):
         pass
 
     def run(self):
+        # pylint: disable=no-name-in-module
         from sh import sphinx_apidoc, make  # type: ignore
         sphinx_apidoc("-o", "docs", "kvlang", "kvlang/tests")
         make("-C", "docs", "clean", "html")

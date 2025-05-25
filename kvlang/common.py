@@ -1,3 +1,6 @@
+"""
+Common constants, functions, etc.
+"""
 from os import environ
 from pathlib import Path
 

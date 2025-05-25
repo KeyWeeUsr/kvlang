@@ -27,5 +27,8 @@ def create_parser(transformer: type[Transformer] = KvTransformer) -> Lark:
 
 
 def parse(text: str) -> Tree:
+    """
+    Main parsing function.
+    """
     parser = create_parser()
     return parser.parse(text)
