@@ -43,7 +43,7 @@ class Lint(Command):
         )
 
 
-class Type(Command):
+class Typing(Command):
     """Run MyPy."""
     def initialize_options(self):
         pass
@@ -75,6 +75,26 @@ class Docs(Command):
 NAME = "kvlang"
 VERSION = "1.0.1"
 ROOT = Path(__file__).parent
+SHARED_DEV = ["sh"]
+EXTRAS_STYLE = SHARED_DEV + ["pycodestyle"]
+EXTRAS_LINT = SHARED_DEV + ["pylint", "yamllint"]
+EXTRAS_TYPING = SHARED_DEV + ["mypy", "types-setuptools"]
+EXTRAS_TEST = SHARED_DEV + ["coverage"]
+EXTRAS_DOCS = SHARED_DEV + ["sphinx"]
+EXTRAS = {
+    "style": EXTRAS_STYLE,
+    "lint": EXTRAS_LINT,
+    "typing": EXTRAS_TYPING,
+    "test": EXTRAS_TEST,
+    "docs": EXTRAS_DOCS,
+    "dev": list(set(
+        EXTRAS_STYLE + EXTRAS_LINT + EXTRAS_TYPING + EXTRAS_TEST + EXTRAS_DOCS
+    )),
+    "kivy": [
+        "kivy>=2.3.1"
+    ],
+    "release": SHARED_DEV + ["wheel", "twine"]
+}
 KWARGS: M[str, str | bool | object] | M[str, Collection[str]] = {
     "name": NAME,
     "version": VERSION,
@@ -89,16 +109,7 @@ KWARGS: M[str, str | bool | object] | M[str, Collection[str]] = {
         f"https://github.com/KeyWeeUsr/{NAME}/tarball/{VERSION}"
     ),
     "install_requires": ["lark>=1.2.2"],
-    "extras_require": {
-        "dev": [
-            "pycodestyle", "pylint", "mypy",
-            "types-setuptools", "sh", "sphinx"
-        ],
-        "kivy": [
-            "kivy>=2.3.1"
-        ],
-        "release": ["wheel", "twine", "sh"]
-    },
+    "extras_require": EXTRAS,
     "package_data": {
         "kvlang": ["*.lark"]
     },
@@ -110,7 +121,7 @@ KWARGS: M[str, str | bool | object] | M[str, Collection[str]] = {
         "Programming Language :: Python :: 3 :: Only"
     ],
     "cmdclass": {
-        "style": Style, "lint": Lint, "type": Type, "docs": Docs
+        "style": Style, "lint": Lint, "typing": Typing, "docs": Docs
     }
 }
 
